@@ -72,12 +72,13 @@ end
 
 namespace :deploy do
   puts "----------------------- deploy -----------------------"
-  after :deploy, :clear_cache do
-    puts "----------------------- after :restart -----------------------"
+  task :restart do
+    puts "----------------------- restart -----------------------"
+    exec "hostname"
+  end
 
-    task :restart do
-      exec "hostname"
-    end
+  after :deploy, :clear_cache do
+    puts "----------------------- after :deploy -----------------------"
 
     # exec "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
     exec "cd /alidata/www/tyrionWeb/current"
