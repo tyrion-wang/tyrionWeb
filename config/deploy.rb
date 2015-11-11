@@ -54,11 +54,24 @@ set :deploy_to, '/alidata/www/tyrionWeb'
 namespace :deploy do
 
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    # on roles(:web), in: :groups, limit: 3, wait: 10 do
+    #   execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+    #   execute "cd /alidata/www/tyrionWeb/current"
+    #   execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+    # end
+
+    on roles(:web) do
       execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
       execute "cd /alidata/www/tyrionWeb/current"
       execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
     end
+
+    on roles(:app) do
+      execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+      execute "cd /alidata/www/tyrionWeb/current"
+      execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+    end
+    
   end
 
 end
