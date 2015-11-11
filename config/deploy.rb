@@ -50,39 +50,62 @@ set :deploy_to, '/alidata/www/tyrionWeb'
 #
 # end
 
-puts "----------------------- START -----------------------"
+# puts "----------------------- START -----------------------"
+#
+# namespace :init do
+#
+#   task :restart do
+#     on roles(:web) do
+#       execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+#       execute "cd /alidata/www/tyrionWeb/current"
+#       execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+#     end
+#
+#     on roles(:app) do
+#       execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+#       execute "cd /alidata/www/tyrionWeb/current"
+#       execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+#     end
+#   end
+#
+# end
+#
+# namespace :deploy do
+#   puts "----------------------- deploy -----------------------"
+#   task :restart do
+#     puts "----------------------- restart -----------------------"
+#     exec "hostname"
+#   end
+#
+#   after :deploy, :clear_cache do
+#     puts "----------------------- after :deploy -----------------------"
+#
+#     # exec "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+#     exec "cd /alidata/www/tyrionWeb/current"
+#     exec "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+#     puts "----------------------- END -----------------------"
+#   end
+# end
 
-namespace :init do
-
-  task :restart do
-    on roles(:web) do
-      execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-      execute "cd /alidata/www/tyrionWeb/current"
-      execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-    end
-
-    on roles(:app) do
-      execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-      execute "cd /alidata/www/tyrionWeb/current"
-      execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-    end
-  end
-
-end
+set :current_path, "/alidata/www/tyrionWeb/current"
+set :unicorn_config, "/alidata/www/tyrionWeb/current/config/unicorn.rb"
+set :unicorn_pid, "/alidata/www/tyrionWeb/current/tmp/pids/unicorn.pid"
 
 namespace :deploy do
-  puts "----------------------- deploy -----------------------"
-  task :restart do
-    puts "----------------------- restart -----------------------"
-    exec "hostname"
-  end
-
-  after :deploy, :clear_cache do
-    puts "----------------------- after :deploy -----------------------"
-
-    # exec "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-    exec "cd /alidata/www/tyrionWeb/current"
-    exec "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+  task :start do
     puts "----------------------- END -----------------------"
+    exec "cd /alidata/www/tyrionWeb/current"
   end
+
+  # task :stop, :roles => :app, :except => { :no_release => true } do
+  #   run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+  # end
+  #
+  # task :restart, :roles => :app, :except => { :no_release => true } do
+  #   # 用USR2信号来实现无缝部署重启
+  #   run "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
+  # end
 end
+
+
+
