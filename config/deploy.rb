@@ -3,6 +3,7 @@ lock '3.4.0'
 
 set :application, 'tyrionWeb'
 set :repo_url, 'https://github.com/MapleLeaf7/tyrionWeb.git'
+set :keep_releases, 5
 
 set :scm_username, "maple_leaf_7@msn.com"
 set :scm_password, "wyf198987"
@@ -12,6 +13,8 @@ set :scm_password, "wyf198987"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/alidata/www/tyrionWeb'
+set :user, "root"              #登录部署机器的用户名
+set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -37,75 +40,32 @@ set :deploy_to, '/alidata/www/tyrionWeb'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# role :web, "101.200.211.156"
+
+# set :roles, "web"
+#
 # namespace :deploy do
 #
-#   after :restart, :clear_cache do
-#     on roles(:web), in: :groups, limit: 3, wait: 10 do
-#       # Here we can do anything such as:
-#       # within release_path do
-#       #   execute :rake, 'cache:clear'
-#       # end
-#     end
+#   task :destory, :roles => :web do
+#     puts "------------------ after :restart -------------------"
+#     exec 'echo "hello $HOSTNAME"'
 #   end
+#
+#   # after :deploy, :clear_cache do
+#   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+#   #     # Here we can do anything such as:
+#   #     # within release_path do
+#   #     #   execute :rake, 'cache:clear'
+#   #     # end
+#   #     puts "------------------ after :restart -------------------"
+#   #
+#   #
+#   #   end
+#   # end
 #
 # end
 
-# puts "----------------------- START -----------------------"
-#
-# namespace :init do
-#
-#   task :restart do
-#     on roles(:web) do
-#       execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-#       execute "cd /alidata/www/tyrionWeb/current"
-#       execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-#     end
-#
-#     on roles(:app) do
-#       execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-#       execute "cd /alidata/www/tyrionWeb/current"
-#       execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-#     end
-#   end
-#
-# end
-#
-# namespace :deploy do
-#   puts "----------------------- deploy -----------------------"
-#   task :restart do
-#     puts "----------------------- restart -----------------------"
-#     exec "hostname"
-#   end
-#
-#   after :deploy, :clear_cache do
-#     puts "----------------------- after :deploy -----------------------"
-#
-#     # exec "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-#     exec "cd /alidata/www/tyrionWeb/current"
-#     exec "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-#     puts "----------------------- END -----------------------"
-#   end
-# end
 
-set :current_path, "/alidata/www/tyrionWeb/current"
-set :unicorn_config, "/alidata/www/tyrionWeb/current/config/unicorn.rb"
-set :unicorn_pid, "/alidata/www/tyrionWeb/current/tmp/pids/unicorn.pid"
-
-namespace :deploy do
-  task :start do
-    puts "----------------------- END -----------------------"
-    exec "cd /alidata/www/tyrionWeb/current"
-  end
-
-  # task :stop, :roles => :app, :except => { :no_release => true } do
-  #   run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
-  # end
-  #
-  # task :restart, :roles => :app, :except => { :no_release => true } do
-  #   # 用USR2信号来实现无缝部署重启
-  #   run "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
-  # end
-end
 
 
 
