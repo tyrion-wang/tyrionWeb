@@ -50,6 +50,8 @@ set :deploy_to, '/alidata/www/tyrionWeb'
 #
 # end
 
+puts "----------------------- START -----------------------"
+
 namespace :init do
 
   task :restart do
@@ -69,21 +71,17 @@ namespace :init do
 end
 
 namespace :deploy do
-  after :restart, :clear_cache do
-    # on roles(:web), in: :groups, limit: 3, wait: 10 do
-    #   execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-    #   execute "cd /alidata/www/tyrionWeb/current"
-    #   execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-    # end
-    after :publishing, 'init:restart'
-  end
-end
+  puts "----------------------- deploy -----------------------"
+  after :deploy, :clear_cache do
+    puts "----------------------- after :restart -----------------------"
 
-after :restart, :clear_cache do
-  # on roles(:web), in: :groups, limit: 3, wait: 10 do
-  #   execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
-  #   execute "cd /alidata/www/tyrionWeb/current"
-  #   execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
-  # end
-  after :publishing, 'init:restart'
+    task :restart do
+      exec "hostname"
+    end
+
+    # exec "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+    exec "cd /alidata/www/tyrionWeb/current"
+    exec "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+    puts "----------------------- END -----------------------"
+  end
 end
