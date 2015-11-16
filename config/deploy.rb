@@ -1,4 +1,6 @@
 # config valid only for current version of Capistrano
+# require 'capistrano/rvm'
+# require 'capistrano/bundler'
 lock '3.4.0'
 
 set :application, 'tyrionWeb'
@@ -12,10 +14,13 @@ set :scm_password, "wyf198987"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
+set :keep_releases, 5          #只保留5个备份
 set :deploy_to, '/alidata/www/tyrionWeb'
 set :user, "root"              #登录部署机器的用户名
 set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
 
+
+# set :rvm_map_bins, %w{gem rake ruby bundle}
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -40,30 +45,94 @@ set :password, "WYF198987"      #登录部署机器的密码， 如果不设部�
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# role :web, "101.200.211.156"
+set :runner, "root"
+role :web, "101.200.211.156"
+set :roles, "web"
 
-# set :roles, "web"
-#
-# namespace :deploy do
-#
-#   task :destory, :roles => :web do
-#     puts "------------------ after :restart -------------------"
-#     exec 'echo "hello $HOSTNAME"'
-#   end
-#
-#   # after :deploy, :clear_cache do
-#   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
-#   #     # Here we can do anything such as:
-#   #     # within release_path do
-#   #     #   execute :rake, 'cache:clear'
-#   #     # end
-#   #     puts "------------------ after :restart -------------------"
-#   #
-#   #
-#   #   end
-#   # end
-#
-# end
+namespace :bundler do
+  desc "Run bundler, installing gems"
+  task :install_app do
+    on roles(:web) do
+      execute("cd /alidata/www/tyrionWeb/current;bundle install")
+    end
+  end
+end
+
+namespace :deploy do
+
+  # task :destory, :roles => :web do
+  #   puts "------------------ after :restart -------------------"
+  #   run "cd /"
+  #   # exec 'echo "hello $HOSTNAME"'
+  # end
+
+  # after :deploy, :clear_cache do
+  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #     # Here we can do anything such as:
+  #     # within release_path do
+  #     #   execute :rake, 'cache:clear'
+  #     # end
+  #     puts "------------------ after :restart -------------------"
+  #
+  #
+  #   end
+  # end
+
+  # task :restart, :roles => :web do
+  #   puts "------------------ restart -------------------"
+  #   exec 'echo "hello $HOSTNAME"'
+  # end
+
+  %w(start stop restart).each do |action|
+    desc "unicorn:#{action}"
+    task action.to_sym do
+      invoke "unicorn:#{action}"
+      #find_and_execute_task("unicorn:#{action}")
+    end
+  end
+
+  # %w(start stop restart).each do |action|
+  #   desc "unicorn:#{action}"
+  #   task action.to_sym do
+  #     invoke "unicorn:#{action}"
+  #     #find_and_execute_task("unicorn:#{action}")
+  #   end
+  # end
+
+end
+
+namespace :unicorn do
+
+  desc "Start unicorn"
+  task :start do
+    on roles(:app) do
+      execute "cd /alidata/www/tyrionWeb/current ; unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -E development -D"
+      # sleep(5)
+      # execute "pwd"
+      # execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
+    end
+  end
+
+
+  desc "Stop unicorn"
+  task :stop do
+    on roles(:web) do
+      puts "------------------ Stop unicorn -------------------"
+      execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+    end
+  end
+
+
+  desc "Restart unicorn"
+  task :restart do
+    on roles(:app) do
+      puts "------------------ Restart unicorn -------------------"
+      execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
+      sleep(5)
+      execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -E development -D"
+    end
+  end
+end
 
 
 

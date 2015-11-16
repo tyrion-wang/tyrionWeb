@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
 # Use Capistrano for deployment
+gem 'capistrano-rvm'
+gem 'capistrano-bundler'
 gem 'capistrano-rails', group: :development # 远程部署工具
 
 group :development, :test do
