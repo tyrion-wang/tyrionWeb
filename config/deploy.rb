@@ -3,7 +3,7 @@
 # require 'capistrano/bundler'
 lock '3.4.0'
 # require 'capistrano/rvm'
-require 'capistrano/bundler'
+# require 'capistrano/bundler'
 
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
@@ -22,6 +22,7 @@ set :password, "wyf198987"
 # Default deploy_to directory is /var/www/my_app_name
 set :keep_releases, 5          #只保留5个备份
 set :deploy_to, "/alidata/www/tyrionWeb"
+# set :deploy_to, "~/"
 set :user, "root"              #登录部署机器的用户名
 set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
 set :use_sudo, true
@@ -71,29 +72,6 @@ end
 
 namespace :deploy do
 
-  # task :destory, :roles => :web do
-  #   puts "------------------ after :restart -------------------"
-  #   run "cd /"
-  #   # exec 'echo "hello $HOSTNAME"'
-  # end
-
-  # after :deploy, :clear_cache do
-  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
-  #     # Here we can do anything such as:
-  #     # within release_path do
-  #     #   execute :rake, 'cache:clear'
-  #     # end
-  #     puts "------------------ after :restart -------------------"
-  #
-  #
-  #   end
-  # end
-
-  # task :restart, :roles => :web do
-  #   puts "------------------ restart -------------------"
-  #   exec 'echo "hello $HOSTNAME"'
-  # end
-
   %w(start stop restart).each do |action|
     desc "unicorn:#{action}"
     task action.to_sym do
@@ -102,14 +80,7 @@ namespace :deploy do
     end
   end
 
-  # %w(start stop restart).each do |action|
-  #   desc "unicorn:#{action}"
-  #   task action.to_sym do
-  #     invoke "unicorn:#{action}"
-  #     #find_and_execute_task("unicorn:#{action}")
-  #   end
-  # end
-
+  after 'deploy', 'restart'
 end
 
 namespace :unicorn do
@@ -117,8 +88,13 @@ namespace :unicorn do
   desc "Start unicorn"
   task :start do
     on roles(:app) do
-      # execute "cd /alidata/www/tyrionWeb/current ; bundle exec unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -E development -D"
-      execute "cd /alidata/www/tyrionWeb/current ; bundle install"
+      execute "cd /alidata/www/tyrionWeb/current ; unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -E development -D"
+
+      # execute "export PATH=$PATH:/usr/local/rvm/gems/ruby-2.2.1@global/bin;bundle install"
+      # execute "echo $PATH"
+      # execute "cd /alidata/www/tyrionWeb/current ; bundle install"
+      # execute "cd /alidata/www/tyrionWeb/current ; pwd"
+      # execute "vim /etc/profile"
       # sleep(5)
       # execute "pwd"
       # execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
@@ -141,7 +117,7 @@ namespace :unicorn do
       puts "------------------ Restart unicorn -------------------"
       execute "kill -9 `cat /alidata/www/tmp/unicorn.pid`"
       sleep(5)
-      execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -E development -D"
+      execute "cd /alidata/www/tyrionWeb/current ; unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -E development -D"
     end
   end
 end
