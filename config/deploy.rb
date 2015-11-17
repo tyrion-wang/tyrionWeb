@@ -2,7 +2,7 @@
 # require 'capistrano/rvm'
 # require 'capistrano/bundler'
 lock '3.4.0'
-
+# require 'bundler/capistrano'
 set :application, 'tyrionWeb'
 set :repo_url, 'https://github.com/MapleLeaf7/tyrionWeb.git'
 set :keep_releases, 5
@@ -15,10 +15,14 @@ set :scm_password, "wyf198987"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :keep_releases, 5          #只保留5个备份
-set :deploy_to, '/alidata/www/tyrionWeb'
+set :deploy_to, "/alidata/www/tyrionWeb"
 set :user, "root"              #登录部署机器的用户名
 set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
 
+set :unicorn_path, "#{deploy_to}/current/config/unicorn.rb"
+set :unicorn_pid, "#{deploy_to}/current/tmp/pids/unicorn.pid"
+
+set :default_env, { rvm_bin_path: '/usr/local/rvm/bin' }
 
 # set :rvm_map_bins, %w{gem rake ruby bundle}
 # Default value for :scm is :git
@@ -37,7 +41,7 @@ set :password, "WYF198987"      #登录部署机器的密码， 如果不设部�
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -48,7 +52,7 @@ set :password, "WYF198987"      #登录部署机器的密码， 如果不设部�
 set :runner, "root"
 role :web, "101.200.211.156"
 set :roles, "web"
-
+`ssh-add`
 namespace :bundler do
   desc "Run bundler, installing gems"
   task :install_app do
@@ -106,7 +110,8 @@ namespace :unicorn do
   desc "Start unicorn"
   task :start do
     on roles(:app) do
-      execute "cd /alidata/www/tyrionWeb/current ; unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -E development -D"
+      # execute "cd /alidata/www/tyrionWeb/current ; bundle exec unicorn_rails -c #{deploy_to}/current/config/unicorn.rb -E development -D"
+      execute "cd /alidata/www/tyrionWeb/current ; bundle install"
       # sleep(5)
       # execute "pwd"
       # execute "unicorn_rails -c /alidata/www/tyrionWeb/current/config/unicorn.rb -D -E development"
