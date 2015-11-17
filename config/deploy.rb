@@ -2,13 +2,19 @@
 # require 'capistrano/rvm'
 # require 'capistrano/bundler'
 lock '3.4.0'
-# require 'bundler/capistrano'
+# require 'capistrano/rvm'
+require 'capistrano/bundler'
+
+set :stages, ["staging", "production"]
+set :default_stage, "staging"
+
 set :application, 'tyrionWeb'
 set :repo_url, 'https://github.com/MapleLeaf7/tyrionWeb.git'
 set :keep_releases, 5
+set :deploy_via, :remote_cache
 
-set :scm_username, "maple_leaf_7@msn.com"
-set :scm_password, "wyf198987"
+set :user, "maple_leaf_7@msn.com"
+set :password, "wyf198987"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -18,6 +24,7 @@ set :keep_releases, 5          #只保留5个备份
 set :deploy_to, "/alidata/www/tyrionWeb"
 set :user, "root"              #登录部署机器的用户名
 set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
+set :use_sudo, true
 
 set :unicorn_path, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/current/tmp/pids/unicorn.pid"

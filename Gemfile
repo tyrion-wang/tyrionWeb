@@ -31,6 +31,7 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development # 远程部署工具
+gem 'capistrano-ext'
 gem 'capistrano-bundler'
 gem 'rvm1-capistrano3', require: false
 
