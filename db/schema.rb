@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110073820) do
-
-  create_table "parties", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20151118062816) do
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",         limit: 255
+    t.string   "email",        limit: 255
+    t.string   "cellphone",    limit: 255
+    t.string   "password",     limit: 255
+    t.integer  "gender",       limit: 4,   default: 0
+    t.integer  "age",          limit: 4,   default: 0
+    t.string   "brief",        limit: 255
+    t.string   "portrait_img", limit: 255
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
 end

@@ -18,7 +18,7 @@ role :web, %w{root@101.200.211.156}
 # Don't use `:all`, it's a meta role.
 
 
-server '101.200.211.156', user: 'root', password: 'WYF198987',roles: %w{web app}, my_property: :my_value
+server '101.200.211.156', user: 'root', roles: %w{web app}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 

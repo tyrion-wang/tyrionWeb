@@ -45,8 +45,22 @@ set :deploy_to, '/alidata/www/tyrionWeb'
 
 role :web, '101.200.211.156'
 set :roles, 'web'
-
+`ssh-add` #秘钥登录
 namespace :deploy do
+
+  desc 'create db'
+  task :create_db do
+    on roles(:web) do
+      execute "cd #{deploy_to}/current &&  rake db:create RAILS_ENV=development"
+    end
+  end
+
+  desc 'migrate db'
+  task :migrate_db do
+    on roles(:web) do
+      execute "cd #{deploy_to}/current &&  rake db:migrate RAILS_ENV=development"
+    end
+  end
 
   %w(start stop restart).each do |action|
     desc "unicorn:#{action}"
@@ -56,7 +70,9 @@ namespace :deploy do
     end
   end
 
-  after 'deploy', 'restart'
+  after 'deploy', 'create_db'
+  after 'create_db', 'migrate_db'
+  after 'migrate_db', 'restart'
 end
 
 namespace :bundler do
