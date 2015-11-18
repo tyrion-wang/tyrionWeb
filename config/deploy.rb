@@ -23,14 +23,14 @@ set :password, "wyf198987"
 set :keep_releases, 5          #只保留5个备份
 set :deploy_to, "/alidata/www/tyrionWeb"
 # set :deploy_to, "~/"
-set :user, "root"              #登录部署机器的用户名
-set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
-set :use_sudo, true
+# set :user, "root"              #登录部署机器的用户名
+# set :password, "WYF198987"      #登录部署机器的密码， 如果不设部署时需要输入密码
+# set :use_sudo, true
 
-set :unicorn_path, "#{deploy_to}/current/config/unicorn.rb"
-set :unicorn_pid, "#{deploy_to}/current/tmp/pids/unicorn.pid"
+# set :unicorn_path, "#{deploy_to}/current/config/unicorn.rb"
+# set :unicorn_pid, "#{deploy_to}/current/tmp/pids/unicorn.pid"
 
-set :default_env, { rvm_bin_path: '/usr/local/rvm/bin' }
+# set :default_env, { rvm_bin_path: '/usr/local/rvm/bin' }
 
 # set :rvm_map_bins, %w{gem rake ruby bundle}
 # Default value for :scm is :git
@@ -49,7 +49,7 @@ set :default_env, { rvm_bin_path: '/usr/local/rvm/bin' }
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -57,18 +57,8 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :runner, "root"
 role :web, "101.200.211.156"
 set :roles, "web"
-`ssh-add`
-namespace :bundler do
-  desc "Run bundler, installing gems"
-  task :install_app do
-    on roles(:web) do
-      execute("cd /alidata/www/tyrionWeb/current;bundle install")
-    end
-  end
-end
 
 namespace :deploy do
 
@@ -81,6 +71,15 @@ namespace :deploy do
   end
 
   after 'deploy', 'restart'
+end
+
+namespace :bundler do
+  desc "Run bundler, installing gems"
+  task :install_app do
+    on roles(:web) do
+      execute("cd #{deploy_to}/current;bundle install")
+    end
+  end
 end
 
 namespace :unicorn do
