@@ -70,9 +70,7 @@ namespace :deploy do
     end
   end
 
-  after 'deploy', 'create_db'
-  after 'create_db', 'migrate_db'
-  after 'migrate_db', 'restart'
+  after 'deploy', 'restart'
 end
 
 namespace :bundler do

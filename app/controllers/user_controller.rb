@@ -30,7 +30,7 @@ class UserController < ApplicationController
     unless user
       render :json => {code: 1,result: RESULT[:failed], msg: t(:users_login_failed)} and return
     end
-    render :json => {code: 1, user: user} and return
+    render :json => {code: 0, user: user} and return
   end
 
   def create
