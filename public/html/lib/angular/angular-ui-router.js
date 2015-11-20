@@ -258,7 +258,7 @@ angular.module('ui.router.router', ['ui.router.util']);
  * @description
  * # ui.router.state sub-module
  *
- * This module is a dependency of the main ui.router module. Do not include this module as a dependency
+ * This module is a dependency of the home ui.router module. Do not include this module as a dependency
  * in your angular app (use {@link ui.router} module instead).
  * 
  */
@@ -273,12 +273,12 @@ angular.module('ui.router.state', ['ui.router.router', 'ui.router.util']);
  * @description
  * # ui.router
  * 
- * ## The main module for ui.router 
+ * ## The home module for ui.router
  * There are several sub-modules included with the ui.router module, however only this module is needed
  * as a dependency within your angular app. The other modules are for organization purposes. 
  *
  * The modules are:
- * * ui.router - the main "umbrella" module
+ * * ui.router - the home "umbrella" module
  * * ui.router.router - 
  * 
  * *You'll need to include **only** this module as the dependency within your angular app.*
@@ -3802,12 +3802,12 @@ angular.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProvider)
  * in the same template. There's not really a compelling reason to name a view if its the only one, 
  * but you could if you wanted, like so:
  * <pre>
- * <div ui-view="main"></div>
+ * <div ui-view="home"></div>
  * </pre> 
  * <pre>
  * $stateProvider.state("home", {
  *   views: {
- *     "main": {
+ *     "home": {
  *       template: "<h1>HELLO!</h1>"
  *     }
  *   }    

@@ -296,7 +296,7 @@ angular.module('bw.paging', []).directive('paging', function () {
 
 
     /**
-    * The main build function used to determine the paging logic
+    * The home build function used to determine the paging logic
     * Feel free to tweak / fork values for your application
     *
     * @param {Object} scope - The local directive scope object
