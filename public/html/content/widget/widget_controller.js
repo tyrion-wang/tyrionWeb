@@ -3,5 +3,6 @@
  */
 party.controller('widget_input_box_controller', function($scope){
     g_log('widget_input_box_controller');
-
+    g_log('$scope.ngMaxlength', $scope.ngMaxlength);
 });
+

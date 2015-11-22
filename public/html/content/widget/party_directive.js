@@ -53,8 +53,8 @@ party.directive('widgetImputBox', [function() {
     return {
         restrict: 'E',
         scope:{
-            type:"@",
-            placeholder:"@"
+            placeholder:"@",
+            ngMaxlength:"@"
         },
         require: 'ngModel',
         templateUrl:'/html/content/widget/widget_inputBox.html',
