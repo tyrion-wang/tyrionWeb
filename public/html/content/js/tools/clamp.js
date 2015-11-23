@@ -43,9 +43,9 @@
 // UTILITY FUNCTIONS __________________________________________________________
 
         /**
-         * Return the current style for an element.
+         * Return the current css for an element.
          * @param {HTMLElement} elem The element to compute.
-         * @param {string} prop The style property.
+         * @param {string} prop The css property.
          * @returns {number}
          */
         function computeStyle(elem, prop) {

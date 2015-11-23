@@ -55,7 +55,7 @@ angular.module('monospaced.elastic', [])
                                 'min-height: 0 !important; height: 0 !important; padding: 0;' +
                                 'word-wrap: break-word; border: 0;',
               $mirror = angular.element('<textarea aria-hidden="true" tabindex="-1" ' +
-                                        'style="' + mirrorInitStyle + '"/>').data('elastic', true),
+                                        'css="' + mirrorInitStyle + '"/>').data('elastic', true),
               mirror = $mirror[0],
               taStyle = getComputedStyle(ta),
               resize = taStyle.getPropertyValue('resize'),
@@ -81,7 +81,7 @@ angular.module('monospaced.elastic', [])
               copyStyle = ['font-family',
                            'font-size',
                            'font-weight',
-                           'font-style',
+                           'font-css',
                            'letter-spacing',
                            'line-height',
                            'text-transform',

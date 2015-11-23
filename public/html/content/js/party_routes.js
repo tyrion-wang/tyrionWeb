@@ -27,7 +27,8 @@ party.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
                     templateUrl: HTML_PATH('/home/home.html')
                 },
                 "homeHeader@home": {
-                    templateUrl: HTML_PATH('/home/home_header.html')
+                    templateUrl: HTML_PATH('/home/home_header.html'),
+                    controller: 'party_home_header_controller'
                 },
                 "@home": {
                     templateUrl: HTML_PATH('/home/home_content.html')

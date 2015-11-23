@@ -1,0 +1,7 @@
+.party-nav li{
+    cursor: pointer;
+}
+
+.party-nav li:hover span{
+    color: black;
+}

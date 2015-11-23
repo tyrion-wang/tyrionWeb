@@ -70,10 +70,10 @@ var jqLite = angular.element;
  * ngMessages directive to make this happen.
  *
  * ```html
- * <!-- attribute-style usage -->
+ * <!-- attribute-css usage -->
  * <div ng-messages="myForm.myField.$error" ng-messages-multiple>...</div>
  *
- * <!-- element-style usage -->
+ * <!-- element-css usage -->
  * <ng-messages for="myForm.myField.$error" multiple>...</ng-messages>
  * ```
  *
@@ -308,7 +308,7 @@ angular.module('ngMessages', [])
     *       </label>
     *       <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
     *
-    *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+    *       <div ng-messages="myForm.myName.$error" css="color:maroon" role="alert">
     *         <div ng-message="required">You did not enter a field</div>
     *         <div ng-message="minlength">Your field is too short</div>
     *         <div ng-message="maxlength">Your field is too long</div>

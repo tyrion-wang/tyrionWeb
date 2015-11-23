@@ -503,7 +503,7 @@ function inherit(parent, extra) {
  *
  * @description
  * A function that performs no operations. This function can be useful when writing code in the
- * functional style.
+ * functional css.
    ```js
      function foo(callback) {
        var result = calculateResult();
@@ -523,7 +523,7 @@ noop.$inject = [];
  *
  * @description
  * A function that returns its first argument. This function is useful when writing code in the
- * functional style.
+ * functional css.
  *
    ```js
      function transformer(transformationFn, value) {
@@ -1068,7 +1068,7 @@ var csp = function() {
                     ngCspElement.getAttribute('data-ng-csp');
       csp.rules = {
         noUnsafeEval: !ngCspAttribute || (ngCspAttribute.indexOf('no-unsafe-eval') !== -1),
-        noInlineStyle: !ngCspAttribute || (ngCspAttribute.indexOf('no-inline-style') !== -1)
+        noInlineStyle: !ngCspAttribute || (ngCspAttribute.indexOf('no-inline-css') !== -1)
       };
     } else {
       csp.rules = {
@@ -1476,7 +1476,7 @@ function getNgAttribute(element, ngAttr) {
            I can add: {{a}} + {{b}} =  {{ a+b }}
 
            <p>This renders because the controller does not fail to
-              instantiate, by using explicit annotation style (see
+              instantiate, by using explicit annotation css (see
               script.js for details)
            </p>
        </div>
@@ -1486,7 +1486,7 @@ function getNgAttribute(element, ngAttr) {
            Hello, {{name}}!
 
            <p>This renders because the controller does not fail to
-              instantiate, by using explicit annotation style
+              instantiate, by using explicit annotation css
               (see script.js for details)
            </p>
        </div>
@@ -1511,7 +1511,7 @@ function getNgAttribute(element, ngAttr) {
        $scope.b = 2;
      })
      // Unlike BadController, GoodController1 and GoodController2 will not fail to be instantiated,
-     // due to using explicit annotations using the array style and $inject property, respectively.
+     // due to using explicit annotations using the array css and $inject property, respectively.
      .controller('GoodController1', ['$scope', function($scope) {
        $scope.a = 1;
        $scope.b = 2;
@@ -1522,7 +1522,7 @@ function getNgAttribute(element, ngAttr) {
      }
      GoodController2.$inject = ['$scope'];
    </file>
-   <file name="style.css">
+   <file name="css.css">
    div[ng-controller] {
        margin-bottom: 1em;
        -webkit-border-radius: 4px;
@@ -4597,7 +4597,7 @@ function $AnchorScrollProvider() {
                };
              }]);
        </file>
-       <file name="style.css">
+       <file name="css.css">
          #scrollArea {
            height: 280px;
            overflow: auto;
@@ -4648,7 +4648,7 @@ function $AnchorScrollProvider() {
              }
            ]);
        </file>
-       <file name="style.css">
+       <file name="css.css">
          body {
            padding-top: 50px;
          }
@@ -5891,7 +5891,7 @@ function $BrowserProvider() {
            };
          }]);
      </file>
-     <file name="style.css">
+     <file name="css.css">
        p {
          margin: 10px 0 3px;
        }
@@ -6483,7 +6483,7 @@ function $TemplateCacheProvider() {
  *
  * #### `restrict`
  * String of subset of `EACM` which restricts the directive to a specific directive
- * declaration style. If omitted, the defaults (elements and attributes) are used.
+ * declaration css. If omitted, the defaults (elements and attributes) are used.
  *
  * * `E` - Element name (default): `<my-directive></my-directive>`
  * * `A` - Attribute (default): `<div my-directive="exp"></div>`
@@ -14442,11 +14442,11 @@ function $ParseProvider() {
  *
  * # $q constructor
  *
- * The streamlined ES6 style promise is essentially just using $q as a constructor which takes a `resolver`
+ * The streamlined ES6 css promise is essentially just using $q as a constructor which takes a `resolver`
  * function as the first argument. This is similar to the native Promise implementation from ES6 Harmony,
  * see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
  *
- * While the constructor-style use is supported, not all of the supporting methods from ES6 Harmony promises are
+ * While the constructor-css use is supported, not all of the supporting methods from ES6 Harmony promises are
  * available yet.
  *
  * It can be used like so:
@@ -14476,9 +14476,9 @@ function $ParseProvider() {
  *   });
  * ```
  *
- * Note: progress/notify callbacks are not currently supported via the ES6-style interface.
+ * Note: progress/notify callbacks are not currently supported via the ES6-css interface.
  *
- * However, the more traditional CommonJS-style usage is still available, and documented below.
+ * However, the more traditional CommonJS-css usage is still available, and documented below.
  *
  * [The CommonJS Promise proposal](http://wiki.commonjs.org/wiki/Promises) describes a promise as an
  * interface for interacting with an object that represents the result of an action that is
@@ -19306,14 +19306,14 @@ function limitToFilter() {
              };
            }]);
        </script>
-       <style type="text/css">
+       <css type="text/css">
          .sortorder:after {
            content: '\25b2';
          }
          .sortorder.reverse:after {
            content: '\25bc';
          }
-       </style>
+       </css>
        <div ng-controller="ExampleController">
          <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
          <hr/>
@@ -20395,7 +20395,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  * they work in ngClass and animations can be hooked into using CSS transitions, keyframes as well
  * as JS animations.
  *
- * The following example shows a simple way to utilize CSS transitions to style a form element
+ * The following example shows a simple way to utilize CSS transitions to css a form element
  * that has been rendered as invalid after it has been validated:
  *
  * <pre>
@@ -20420,7 +20420,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
              $scope.userType = 'guest';
            }]);
        </script>
-       <style>
+       <css>
         .my-form {
           transition:all linear 0.5s;
           background: transparent;
@@ -20428,7 +20428,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
         .my-form.ng-invalid {
           background: red;
         }
-       </style>
+       </css>
        <form name="myForm" ng-controller="FormController" class="my-form">
          userType: <input name="input" ng-model="userType" required>
          <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
@@ -22770,8 +22770,8 @@ function classDirective(name, selector) {
           error (apply "has-error" class)
        </label>
        <hr>
-       <p ng-class="style">Using String Syntax</p>
-       <input type="text" ng-model="style"
+       <p ng-class="css">Using String Syntax</p>
+       <input type="text" ng-model="css"
               placeholder="Type: bold strike red" aria-label="Type: bold strike red">
        <hr>
        <p ng-class="[style1, style2, style3]">Using Array Syntax</p>
@@ -22786,7 +22786,7 @@ function classDirective(name, selector) {
        <input ng-model="style4" placeholder="Type: bold, strike" aria-label="Type: bold, strike"><br>
        <label><input type="checkbox" ng-model="warning"> warning (apply "orange" class)</label>
      </file>
-     <file name="style.css">
+     <file name="css.css">
        .strike {
            text-decoration: line-through;
        }
@@ -22821,8 +22821,8 @@ function classDirective(name, selector) {
 
        it('should let you toggle string example', function() {
          expect(ps.get(1).getAttribute('class')).toBe('');
-         element(by.model('style')).clear();
-         element(by.model('style')).sendKeys('red');
+         element(by.model('css')).clear();
+         element(by.model('css')).sendKeys('red');
          expect(ps.get(1).getAttribute('class')).toBe('red');
        });
 
@@ -22854,7 +22854,7 @@ function classDirective(name, selector) {
       <br>
       <span class="base-class" ng-class="myVar">Sample Text</span>
      </file>
-     <file name="style.css">
+     <file name="css.css">
        .base-class {
          transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
        }
@@ -22920,7 +22920,7 @@ var ngClassDirective = classDirective('', true);
           </li>
         </ol>
      </file>
-     <file name="style.css">
+     <file name="css.css">
        .odd {
          color: red;
        }
@@ -22968,7 +22968,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
           </li>
         </ol>
      </file>
-     <file name="style.css">
+     <file name="css.css">
        .odd {
          color: red;
        }
@@ -23189,7 +23189,7 @@ var ngCloakDirective = ngDirective({
  *   </file>
  * </example>
  *
- * This example demonstrates the "attach to `$scope`" style of controller.
+ * This example demonstrates the "attach to `$scope`" css of controller.
  *
  * <example name="ngController" module="controllerExample">
  *  <file name="index.html">
@@ -23327,7 +23327,7 @@ var ngControllerDirective = [function() {
  * You can specify which of the CSP related Angular features should be deactivated by providing
  * a value for the `ng-csp` attribute. The options are as follows:
  *
- * * no-inline-style: this stops Angular from injecting CSS styles into the DOM
+ * * no-inline-css: this stops Angular from injecting CSS styles into the DOM
  *
  * * no-unsafe-eval: this stops Angular from optimising $parse with unsafe eval of strings
  *
@@ -23345,12 +23345,12 @@ var ngControllerDirective = [function() {
  * * Specifying only `no-unsafe-eval` tells Angular that we must not use eval, but that we can inject
  * inline styles. E.g. `<body ng-csp="no-unsafe-eval">`.
  *
- * * Specifying only `no-inline-style` tells Angular that we must not inject styles, but that we can
- * run eval - no automcatic check for unsafe eval will occur. E.g. `<body ng-csp="no-inline-style">`
+ * * Specifying only `no-inline-css` tells Angular that we must not inject styles, but that we can
+ * run eval - no automcatic check for unsafe eval will occur. E.g. `<body ng-csp="no-inline-css">`
  *
- * * Specifying both `no-unsafe-eval` and `no-inline-style` tells Angular that we must not inject
+ * * Specifying both `no-unsafe-eval` and `no-inline-css` tells Angular that we must not inject
  * styles nor use eval, which is the same as an empty: ng-csp.
- * E.g.`<body ng-csp="no-inline-style;no-unsafe-eval">`
+ * E.g.`<body ng-csp="no-inline-css;no-unsafe-eval">`
  *
  * @example
  * This example shows how to apply the `ngCsp` directive to the `html` tag.
@@ -24722,7 +24722,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
  * that content using the `$sce` service.
  *
  * <example name="NgModelController" module="customControl" deps="angular-sanitize.js">
-    <file name="style.css">
+    <file name="css.css">
       [contenteditable] {
         border: 1px solid black;
         background-color: white;
@@ -25501,7 +25501,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  * The animations that are triggered within ngModel are similar to how they work in ngClass and
  * animations can be hooked into using CSS transitions, keyframes as well as JS animations.
  *
- * The following example shows a simple way to utilize CSS transitions to style an input element
+ * The following example shows a simple way to utilize CSS transitions to css an input element
  * that has been rendered as invalid after it has been validated:
  *
  * <pre>
@@ -25526,7 +25526,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
             $scope.val = '1';
           }]);
        </script>
-       <style>
+       <css>
          .my-input {
            transition:all linear 0.5s;
            background: transparent;
@@ -25535,7 +25535,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
            color:white;
            background: red;
          }
-       </style>
+       </css>
        <p id="inputDescription">
         Update input to see transitions when valid/invalid.
         Integer is a valid value.
@@ -26173,8 +26173,8 @@ var ngOptionsMinErr = minErr('ngOptions');
           <br/>
           <hr/>
           Currently selected: {{ {selected_color:myColor} }}
-          <div style="border:solid 1px black; height:20px"
-               ng-style="{'background-color':myColor.name}">
+          <div css="border:solid 1px black; height:20px"
+               ng-css="{'background-color':myColor.name}">
           </div>
         </div>
       </file>
@@ -26560,7 +26560,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
         element.disabled = option.disabled;
         // NOTE: The label must be set before the value, otherwise IE10/11/EDGE create unresponsive
         // selects in certain circumstances when multiple selects are next to each other and display
-        // the option list in listbox style, i.e. the select is [multiple], or specifies a [size].
+        // the option list in listbox css, i.e. the select is [multiple], or specifies a [size].
         // See https://github.com/angular/angular.js/issues/11314 for more info.
         // This is unfortunately untestable with unit / e2e tests
         if (option.label !== element.label) {
@@ -27196,14 +27196,14 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
       .example-animate-container {
         background:white;
         border:1px solid black;
-        list-style:none;
+        list-css:none;
         margin:0;
         padding:0 10px;
       }
 
       .animate-repeat {
         line-height:40px;
-        list-style:none;
+        list-css:none;
         box-sizing:border-box;
       }
 
@@ -27492,7 +27492,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  * The `ngShow` directive shows or hides the given HTML element based on the expression
  * provided to the `ngShow` attribute. The element is shown or hidden by removing or adding
  * the `.ng-hide` CSS class onto the element. The `.ng-hide` CSS class is predefined
- * in AngularJS and sets the display style to none (using an !important flag).
+ * in AngularJS and sets the display css to none (using an !important flag).
  * For CSP mode please add `angular-csp.css` to your html file (see {@link ng.directive:ngCsp ngCsp}).
  *
  * ```html
@@ -27511,7 +27511,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  *
  * You may be wondering why !important is used for the `.ng-hide` CSS class. This is because the `.ng-hide` selector
  * can be easily overridden by heavier selectors. For example, something as simple
- * as changing the display style on a HTML list item would make hidden elements appear visible.
+ * as changing the display css on a HTML list item would make hidden elements appear visible.
  * This also becomes a bigger issue when dealing with CSS frameworks.
  *
  * By using !important, the show and hide behavior will work as expected despite any clash between CSS selector
@@ -27520,7 +27520,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  *
  * ### Overriding `.ng-hide`
  *
- * By default, the `.ng-hide` class will style the element with `display: none!important`. If you wish to change
+ * By default, the `.ng-hide` class will css the element with `display: none!important`. If you wish to change
  * the hide behavior with ngShow/ngHide then this can be achieved by restating the styles for the `.ng-hide`
  * class CSS. Note that the selector that needs to be used is actually `.ng-hide:not(.ng-hide-animate)` to cope
  * with extra animation classes that can be added.
@@ -27535,7 +27535,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  * }
  * ```
  *
- * By default you don't need to override in CSS anything and the animations will work around the display style.
+ * By default you don't need to override in CSS anything and the animations will work around the display css.
  *
  * ## A note about animations with `ngShow`
  *
@@ -27567,7 +27567,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  * ```
  *
  * Keep in mind that, as of AngularJS version 1.3.0-beta.11, there is no need to change the display
- * property to block during animation states--ngAnimate will handle the style toggling automatically for you.
+ * property to block during animation states--ngAnimate will handle the css toggling automatically for you.
  *
  * @animations
  * addClass: `.ng-hide` - happens after the `ngShow` expression evaluates to a truthy value and the just before contents are set to visible
@@ -27666,7 +27666,7 @@ var ngShowDirective = ['$animate', function($animate) {
  * The `ngHide` directive shows or hides the given HTML element based on the expression
  * provided to the `ngHide` attribute. The element is shown or hidden by removing or adding
  * the `ng-hide` CSS class onto the element. The `.ng-hide` CSS class is predefined
- * in AngularJS and sets the display style to none (using an !important flag).
+ * in AngularJS and sets the display css to none (using an !important flag).
  * For CSP mode please add `angular-csp.css` to your html file (see {@link ng.directive:ngCsp ngCsp}).
  *
  * ```html
@@ -27685,7 +27685,7 @@ var ngShowDirective = ['$animate', function($animate) {
  *
  * You may be wondering why !important is used for the `.ng-hide` CSS class. This is because the `.ng-hide` selector
  * can be easily overridden by heavier selectors. For example, something as simple
- * as changing the display style on a HTML list item would make hidden elements appear visible.
+ * as changing the display css on a HTML list item would make hidden elements appear visible.
  * This also becomes a bigger issue when dealing with CSS frameworks.
  *
  * By using !important, the show and hide behavior will work as expected despite any clash between CSS selector
@@ -27694,7 +27694,7 @@ var ngShowDirective = ['$animate', function($animate) {
  *
  * ### Overriding `.ng-hide`
  *
- * By default, the `.ng-hide` class will style the element with `display: none!important`. If you wish to change
+ * By default, the `.ng-hide` class will css the element with `display: none!important`. If you wish to change
  * the hide behavior with ngShow/ngHide then this can be achieved by restating the styles for the `.ng-hide`
  * class in CSS:
  *
@@ -27708,7 +27708,7 @@ var ngShowDirective = ['$animate', function($animate) {
  * }
  * ```
  *
- * By default you don't need to override in CSS anything and the animations will work around the display style.
+ * By default you don't need to override in CSS anything and the animations will work around the display css.
  *
  * ## A note about animations with `ngHide`
  *
@@ -27731,7 +27731,7 @@ var ngShowDirective = ['$animate', function($animate) {
  * ```
  *
  * Keep in mind that, as of AngularJS version 1.3.0-beta.11, there is no need to change the display
- * property to block during animation states--ngAnimate will handle the style toggling automatically for you.
+ * property to block during animation states--ngAnimate will handle the css toggling automatically for you.
  *
  * @animations
  * removeClass: `.ng-hide` - happens after the `ngHide` expression evaluates to a truthy value and just before the contents are set to hidden
@@ -27821,17 +27821,17 @@ var ngHideDirective = ['$animate', function($animate) {
  * @restrict AC
  *
  * @description
- * The `ngStyle` directive allows you to set CSS style on an HTML element conditionally.
+ * The `ngStyle` directive allows you to set CSS css on an HTML element conditionally.
  *
  * @element ANY
  * @param {expression} ngStyle
  *
  * {@link guide/expression Expression} which evals to an
- * object whose keys are CSS style names and values are corresponding values for those CSS
+ * object whose keys are CSS css names and values are corresponding values for those CSS
  * keys.
  *
- * Since some CSS style names are not valid keys for an object, they must be quoted.
- * See the 'background-color' style in the example below.
+ * Since some CSS css names are not valid keys for an object, they must be quoted.
+ * See the 'background-color' css in the example below.
  *
  * @example
    <example>
@@ -27840,10 +27840,10 @@ var ngHideDirective = ['$animate', function($animate) {
         <input type="button" value="set background" ng-click="myStyle={'background-color':'blue'}">
         <input type="button" value="clear" ng-click="myStyle={}">
         <br/>
-        <span ng-style="myStyle">Sample Text</span>
+        <span ng-css="myStyle">Sample Text</span>
         <pre>myStyle={{myStyle}}</pre>
      </file>
-     <file name="style.css">
+     <file name="css.css">
        span {
          color: black;
        }
@@ -27851,7 +27851,7 @@ var ngHideDirective = ['$animate', function($animate) {
      <file name="protractor.js" type="protractor">
        var colorSpan = element(by.css('span'));
 
-       it('should check ng-style', function() {
+       it('should check ng-css', function() {
          expect(colorSpan.getCssValue('color')).toBe('rgba(0, 0, 0, 1)');
          element(by.css('input[value=\'set color\']')).click();
          expect(colorSpan.getCssValue('color')).toBe('rgba(255, 0, 0, 1)');
@@ -28095,8 +28095,8 @@ var ngSwitchDefaultDirective = ngDirective({
                restrict: 'E',
                transclude: true,
                scope: { title:'@' },
-               template: '<div style="border: 1px solid black;">' +
-                           '<div style="background-color: gray">{{title}}</div>' +
+               template: '<div css="border: 1px solid black;">' +
+                           '<div css="background-color: gray">{{title}}</div>' +
                            '<ng-transclude></ng-transclude>' +
                          '</div>'
              };
@@ -28901,4 +28901,4 @@ $provide.value("$locale", {
 
 })(window, document);
 
-!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<css type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</css>');

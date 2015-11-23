@@ -1,0 +1,16 @@
+@types: left, right, top, bottom, horizontal, vertical;
+@length : length(@types);
+
+.base-padding(@n, @i: 1) when (@i =< @n) {
+  .type(@n , @index: 1) when (@index =< @n) {
+    @type : extract(@types, @index);
+    .base-padding-@{i}-@{type} {
+      padding-@{type}: @i * 1px;
+    }
+    .type(@n, (@index + 1));
+  }
+  .type(@length);
+  .base-padding(@n, (@i + 1));
+}
+
+.base-padding(30);
