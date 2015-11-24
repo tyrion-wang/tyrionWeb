@@ -1,0 +1,9 @@
+$circles:(small: 30px, normal: 40px, big: 70px, large: 90px, huge: 120px);
+
+@each $circle, $size in $circles{
+  .base-img-circle-#{$circle} {
+    border-radius: 50%;
+    width: #{$size};
+    height: #{$size};
+  }
+}

@@ -1,0 +1,29 @@
+$margin_types: left, right, top, bottom;
+$margin_range: 30;
+
+@for $size from 1 through $margin_range {
+  .base-margin-#{$size} {
+    margin: $size * 1px;
+  }
+
+  @each $type in $margin_types {
+    .base-margin-#{$size}-#{$type} {
+      margin-#{$type}: $size * 1px;
+    }
+  }
+
+  .base-margin-#{$size}-horizontal {
+    margin-left: $size * 1px;
+    margin-right: $size * 1px;
+  }
+
+  .base-margin-#{$size}-vertical {
+    margin-top: $size * 1px;
+    margin-bottom: $size * 1px;
+  }
+}
+
+.base-margin-auto{
+  margin-left: auto;
+  margin-right: auto;
+}

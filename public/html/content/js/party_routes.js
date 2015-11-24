@@ -42,7 +42,8 @@ party.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/login",
             views: {
                 "@home": {
-                    templateUrl: HTML_PATH('/passport/passport_login.html')
+                    templateUrl: HTML_PATH('/passport/passport_login.html'),
+                    controller: 'party_passport_login_controller'
                 }
             }
         })
@@ -50,7 +51,8 @@ party.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             url: "/register",
             views: {
                 "@home": {
-                    templateUrl: HTML_PATH('/passport/passport_register.html')
+                    templateUrl: HTML_PATH('/passport/passport_register.html'),
+                    controller: 'party_passport_register_controller'
                 }
             }
         })

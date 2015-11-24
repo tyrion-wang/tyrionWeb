@@ -1,0 +1,17 @@
+$border_types: -left, -right, -top, -bottom;
+$border_colors: ('': black, -red: darkred, -yellow: gold, -blue: dodgerblue);
+$border_range: 3;
+
+@for $size from 1 through $border_range {
+
+  @each $colorName, $colorValue in $border_colors{
+    .base-border-#{$size}#{$colorName} {
+      border: $size * 1px solid #{$colorValue};
+    }
+    @each $type in $border_types {
+      .base-border-#{$size}#{$colorName}#{$type} {
+        border#{$type}: $size * 1px solid #{$colorValue};
+      }
+    }
+  }
+}

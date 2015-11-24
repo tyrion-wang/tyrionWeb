@@ -1,0 +1,24 @@
+$padding_types: left, right, top, bottom;
+$padding_range: 30;
+
+@for $size from 1 through $padding_range {
+  .base-padding-#{$size} {
+    padding: $size * 1px;
+  }
+
+  @each $type in $padding_types {
+    .base-padding-#{$size}-#{$type} {
+      padding-#{$type}: $size * 1px;
+    }
+  }
+
+  .base-padding-#{$size}-horizontal {
+    padding-left: $size * 1px;
+    padding-right: $size * 1px;
+  }
+
+  .base-padding-#{$size}-vertical {
+    padding-top: $size * 1px;
+    padding-bottom: $size * 1px;
+  }
+}

@@ -47,3 +47,17 @@ party.directive('myGuestJarallaxInit', [function() {
         }
     }
 }]);
+
+//自定义输入框
+party.directive('widgetImputBox', [function() {
+    return {
+        restrict: 'E',
+        scope:{
+            type:"@",
+            placeholder:"@"
+        },
+        require: 'ngModel',
+        templateUrl:'/html/content/widget/widget_inputBox.html',
+        controller:'widget_input_box_controller'
+    }
+}]);

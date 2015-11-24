@@ -1,0 +1,6 @@
+<input name="mInput" type="{{type}}" ng-model="username" class="form-control" id="inputEmail3" placeholder="{{placeholder}}" ng-maxlength="10">
+<div class="error text-danger pull-left">
+    <div class="error" ng-if="setting_form.mInput.$dirty">
+        <small class="pa-error-font">姓名的长度在20个字符以内</small>
+    </div>
+</div>

@@ -5,7 +5,6 @@
 //头部导航栏
 party.controller('party_home_header_controller', function($scope, $location){
     g_log('party_home_header_controller');
-
     $scope.isActive = function (route) {
         var path = $location.path();
         var position = path.lastIndexOf('/', path.length);
