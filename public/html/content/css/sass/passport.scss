@@ -1,0 +1,40 @@
+@import "g-color";
+
+.party-error-message{
+  $height1: 23px;
+  height: $height1;
+  line-height: $height1;
+}
+
+    .party-error-message img{
+      width: 13px;
+      height: 13px;
+      position: relative;
+      top: -1px;
+    }
+
+    .party-error-message small{
+      color: $red-error;
+    }
+
+
+$input-box-height: 35px;
+.party-input-box{
+  height: $input-box-height;
+  margin-bottom: 23px;
+}
+
+.party-input-box .input-name{
+  width: 30%;
+  height: $input-box-height;
+  line-height: $input-box-height;
+}
+
+.party-input-box .input-box{
+  height: $input-box-height;
+  width: 70%;
+}
+
+//.party-input-box input{
+//  height: $input-box-height;
+//}

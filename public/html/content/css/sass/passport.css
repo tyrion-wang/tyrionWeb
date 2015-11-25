@@ -1,0 +1,28 @@
+.party-error-message {
+  height: 23px;
+  line-height: 23px; }
+
+.party-error-message img {
+  width: 13px;
+  height: 13px;
+  position: relative;
+  top: -1px; }
+
+.party-error-message small {
+  color: #ff7c68; }
+
+.party-input-box {
+  height: 42px; }
+
+.party-input-box .input-name {
+  width: 20%;
+  height: 42px;
+  line-height: 42px; }
+
+.party-input-box .input-box {
+  width: 80%; }
+
+.party-input-box input {
+  height: 42px; }
+
+/*# sourceMappingURL=passport.css.map */

@@ -1,7 +1,7 @@
 /**
  * Created by tyrion on 15-11-11.
  */
-var party = angular.module("party", ['ngCookies', 'ngMessages', 'ui.router']);
+var party = angular.module("party", ['ngCookies', 'ngMessages', 'ngAnimate', 'ui.router', 'ngDialog']);
 
 var isDebug = true;
 var g_log = function (name, log) {

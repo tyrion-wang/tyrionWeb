@@ -1,0 +1,31 @@
+@import "g-color";
+$font-small: 12px;
+$font-normal: 14px;
+$font-big: 16px;
+$font-large: 18px;
+$font-huge: 20px;
+
+.base-font-small{
+  font-size: $font-small;
+  color: $gray-light;
+}
+
+.base-font-normal{
+  font-size: $font-normal;
+  color: $gray-light;
+}
+
+.base-font-big{
+  font-size: $font-big;
+  color: $gray-light;
+}
+
+.base-font-large{
+  font-size: $font-large;
+  color: $gray-light;
+}
+
+.base-font-huge{
+  font-size: $font-huge;
+  color: $gray-light;
+}

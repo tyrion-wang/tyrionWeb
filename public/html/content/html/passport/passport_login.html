@@ -1,26 +1,34 @@
 <form name="setting_form" class="form-horizontal base-margin-auto" style="width: 400px; margin-top: 200px">
-    <div class="form-group">
-        <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
-        <div class="col-sm-10">
-            <widget-imput-box id="inputEmail" placeholder="手机/邮箱/用户名" ng-maxlength="10">
-        </div>
-        <!--<div class="col-sm-10">-->
-            <!--<input name="mInput" ng-model="username" class="form-control" placeholder="手机/邮箱/用户名" ng-maxlength="10">-->
-            <!--<div class="error text-danger pull-left">-->
-                <!--<div class="error" ng-if="setting_form.mInput.$error.maxlength">-->
-                    <!--<small class="pa-error-font">姓名的长度在20个字符以内</small>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+    <div class="form-group party-input-box" >
+        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="userName">账号:</label>
+        <input name="userName"
+               id="userName"
+               ng-model="userName"
+               required
+               class="input-box"
+               placeholder="手机/邮箱">
     </div>
-    <div class="form-group">
-        <label for="inputPassword" class="col-sm-2 control-label">密码</label>
-        <div class="col-sm-10">
-            <widget-imput-box type="password" id="inputPassword" placeholder="密码">
+
+    <!-- 可以屏蔽下面的自动填表 -->
+    <input type="password" style="display:none">
+
+    <div class="form-group party-input-box" >
+        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="password1">输入密码:</label>
+        <input name="passWord1"
+               id="passWord1"
+               ng-model="passWord1"
+               required
+               type="password"
+               class="input-box"
+               placeholder="输入密码" >
+        <div class="party-error-message" ng-show="setting_form.passWord1.$error.pattern">
+            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+            <small >密码长度为6-16，至少包含字母、数字，区分大小写</small>
         </div>
     </div>
+
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="pull-right" style="width: 70%;">
             <div class="checkbox">
                 <label>
                     <input type="checkbox"> 下次自动登录
@@ -29,19 +37,6 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button class="btn btn-default" ng-disabled="setting_form.$invalid">Sign in</button>
-        </div>
+        <span class="btn btn-default pull-right" style="width: 70%">登录</span>
     </div>
 </form>
-<!--<form name="setting_form">-->
-
-    <!--<input name="last_name"  ng-model="username" ng-maxlength="10">-->
-
-    <!--<span class="btn btn-primary btn-lg text-center pull-right" -->
-          <!--ng-disabled="setting_form.$invalid" -->
-          <!--style="width:400px; height: 42px;" -->
-          <!--ng-click="saveInfo()" >保存</span>-->
-
-
-<!--</form>-->
