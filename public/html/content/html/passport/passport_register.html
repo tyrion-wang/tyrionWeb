@@ -90,7 +90,7 @@
                     <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
                     <small >昵称不能超过20个字符</small>
                 </div>
-                <div class="party-error-message" ng-show="register_form.nickname.$error.occupied && nickname_blur">
+                <div class="party-error-message" ng-show="improve_form.nickname.$error.occupied && nickname_blur">
                     <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
                     <small >此昵称已被占用</small>
                 </div>
@@ -98,22 +98,14 @@
 
             <div class="form-group party-input-box" >
                 <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="gender">性别:</label>
-                <input name="gender"
-                       id="gender"
-                       ng-model="gender"
-                       required
-                       class="input-box"
-                       placeholder="请输入您的性别"
-                       ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
-                       ng-blur="gender_blur = true"
-                       ng-focus="gender_blur = false">
+                <widget-select-sex gender="gender"></widget-select-sex>
                 <div class="party-error-message" ng-show="improve_form.gender.$error.pattern && gender_blur">
                     <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
                     <small >请输入正确的手机号或邮箱</small>
                 </div>
             </div>
 
-            <div class="form-group party-input-box" >
+            <div class="form-group party-input-box">
                 <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="brief">简介:</label>
                 <input name="brief"
                        id="brief"

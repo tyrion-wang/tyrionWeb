@@ -1,0 +1,42 @@
+.pa-select-box{
+    padding: 10px;
+    border: 1px solid #d5d9dc;
+}
+
+.pa-select-box:focus{
+    border: 2px solid black;
+}
+
+.pa-select-item{
+    cursor: pointer;
+}
+
+.pa-select-item > p{
+    white-space:nowrap;
+    font-size: 14px;
+}
+
+.pa-select-item:hover{
+    background-color: black;
+}
+
+.pa-select-item:hover > p{
+   color: white;
+}
+
+.pa-address-item{
+    width: 80px;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.pa-ico-down-position{
+    position: relative;
+    top: -33px;
+    left: 30px;
+    font-size: 14px
+}

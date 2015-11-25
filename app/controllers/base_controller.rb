@@ -6,7 +6,7 @@ RESULT = {
 IS_STAGING = true
 
 # 跨域域名
-ACCESS_CONTROL_ALLOW_ORIGIN = 'https://www.9panart.com'
+ACCESS_CONTROL_ALLOW_ORIGIN = 'https://www.party.com'
 
 class BaseController < ActionController::Base
 

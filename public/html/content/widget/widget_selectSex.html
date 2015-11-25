@@ -1,0 +1,17 @@
+<link href="/html/content/widget/css/widget_select.css" rel="stylesheet" />
+
+<div>
+    <input ng-model="sexValue" type="text"
+           class="input-box"
+           ng-focus="show()"
+           ng-blur="hide()"
+           readonly="readonly"/>
+    <!--<p class="pa-ico-down" style="position: absolute; right: 0; margin-right: 80px; margin-top: -28px"></p>-->
+    <div class="pull-right" style="position: relative; width: 70%" ng-if="isShowList">
+        <div ng-repeat="sex in sexGroup">
+            <div class="epd-cursor-pointer pa-select-item" ng-click="select(sex)" style="height: 40px;">
+                <p style="line-height:40px;">{{sex.value}}</p>
+            </div>
+        </div>
+    </div>
+</div>

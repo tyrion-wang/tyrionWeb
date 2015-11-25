@@ -132,3 +132,16 @@ party.directive('myCheckNickname', [function() {
         }
     }
 }]);
+
+//性别选择框
+party.directive('widgetSelectSex', [function() {
+    return {
+        restrict: 'E',
+        scope:{
+            gender:"="
+        },
+        require: '?ngModel',
+        templateUrl:'/html/content/widget/widget_selectSex.html',
+        controller:'widget_select_sex_controller'
+    }
+}]);
