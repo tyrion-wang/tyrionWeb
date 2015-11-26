@@ -27,6 +27,19 @@ party.controller('party_passport_register_controller', function($scope, api, $ht
         }
     });
 
+    $scope.checkAccount = function(){
+        $scope.account_blur = true;
+        var account = $scope.account + '';
+        if(account.indexOf('@') != -1){
+            var email = $scope.account;
+        }else{
+            var cellphone = $scope.account;
+        }
+        api.passport.check({'email': email, 'cellphone': cellphone}).then(function(result){
+            g_log('result', result);
+        });
+    };
+
     $scope.userRegister = function(){
         $scope.isUserRegisterFinish = true;
     };

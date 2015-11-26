@@ -1,9 +1,4 @@
-RESULT = {
-    failed: 'failed',
-    ok: 'ok',
-}
-
-class UserController < ApplicationController
+class UserController < BaseController
   def login
     email     = params[:email]
     cellphone = params[:cellphone]

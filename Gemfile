@@ -35,6 +35,10 @@ gem 'capistrano-ext'
 gem 'capistrano-bundler'
 gem 'rvm1-capistrano3', require: false
 
+
+# 跨域
+gem 'rack-cors'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

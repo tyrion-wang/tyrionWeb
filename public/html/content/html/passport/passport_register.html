@@ -6,19 +6,24 @@
 
         <form name="register_form" >
             <div class="form-group party-input-box" >
-                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="userName">账号:</label>
-                <input name="userName"
-                       id="userName"
-                       ng-model="userName"
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="account">账号:</label>
+                <input name="account"
+                       id="account"
+                       ng-model="account"
                        required
                        class="input-box"
                        placeholder="手机/邮箱"
                        ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
-                       ng-blur="userName_blur = true"
-                       ng-focus="userName_blur = false">
-                <div class="party-error-message" ng-show="register_form.userName.$error.pattern && userName_blur">
+                       ng-blur="account_blur = true"
+                       ng-focus="account_blur = false"
+                       my-check-account>
+                <div class="party-error-message" ng-show="register_form.account.$error.pattern && account_blur">
                     <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
                     <small >请输入正确的手机号或邮箱</small>
+                </div>
+                <div class="party-error-message" ng-show="register_form.account.$error.occupied && account_blur">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >此用户名已被占用</small>
                 </div>
             </div>
 

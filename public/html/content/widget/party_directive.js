@@ -63,3 +63,40 @@ party.directive('widgetImputBox', [function() {
         controller:'widget_input_box_controller'
     }
 }]);
+
+//判断焦点
+party.directive('myCheckAccount', [function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        controller: function($scope, $element, api) {
+            $scope.check = function(email, cellphone, callback){
+                api.passport.check({'email': email, 'cellphone': cellphone}).then(function(result){
+                    callback(result);
+                });
+            }
+        },
+        link: function($scope, $element, $attrs, $ctrl, api) {
+            $element.bind('focus', function() {
+                $ctrl.$error.occupied = false;
+            }).bind('blur', function() {
+                var account = $scope.account + '';
+                if(account.indexOf('@') != -1){
+                    var email = $scope.account;
+                }else{
+                    var cellphone = $scope.account;
+                }
+                g_log('cellphone', cellphone);
+                $scope.check(email, cellphone, function(result){
+                    g_log('result', result);
+                    if(result.data.code == 1){
+                        $ctrl.$error.occupied = true;
+                    }else{
+                        $ctrl.$error.occupied = false;
+                    }
+                });
+
+            });
+        }
+    }
+}]);
