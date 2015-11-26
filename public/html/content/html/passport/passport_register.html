@@ -1,115 +1,129 @@
-<form name="register_form" class="form-horizontal base-margin-auto" style="width: 400px; margin-top: 200px">
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="userName">账号:</label>
-        <input name="userName"
-               id="userName"
-               ng-model="userName"
-               required
-               class="input-box"
-               placeholder="手机/邮箱"
-               ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
-               ng-blur="userName_blur = true"
-               ng-focus="userName_blur = false">
-        <div class="party-error-message" ng-show="register_form.userName.$error.pattern && userName_blur">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >请输入正确的手机号或邮箱</small>
+<div style="margin-top: 200px">
+    <div ng-hide="isUserRegisterFinish" class="form-horizontal base-margin-auto" style="width: 400px;">
+        <div class="clearfix base-margin-10-bottom">
+            <p class="text-center pull-right" style="width: 70%; font-size: 25px">用户注册</p>
         </div>
+
+        <form name="register_form" >
+            <div class="form-group party-input-box" >
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="userName">账号:</label>
+                <input name="userName"
+                       id="userName"
+                       ng-model="userName"
+                       required
+                       class="input-box"
+                       placeholder="手机/邮箱"
+                       ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
+                       ng-blur="userName_blur = true"
+                       ng-focus="userName_blur = false">
+                <div class="party-error-message" ng-show="register_form.userName.$error.pattern && userName_blur">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >请输入正确的手机号或邮箱</small>
+                </div>
+            </div>
+
+            <!-- 可以屏蔽下面的自动填表 -->
+            <input type="password" style="display:none">
+
+            <div class="form-group party-input-box" >
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="password1">输入密码:</label>
+                <input name="passWord1"
+                       id="passWord1"
+                       ng-model="passWord1"
+                       required
+                       type="password"
+                       class="input-box"
+                       placeholder="手机/邮箱"
+                       ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z\s]{6,16}$/" >
+                <div class="party-error-message" ng-show="register_form.passWord1.$error.pattern">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >密码长度为6-16，至少包含字母、数字，区分大小写</small>
+                </div>
+            </div>
+
+            <div class="form-group party-input-box" >
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="passWord2">再次输入密码:</label>
+                <input name="passWord2"
+                       id="passWord2"
+                       ng-model="passWord2"
+                       required
+                       type="password"
+                       class="input-box"
+                       placeholder="手机/邮箱"
+                       ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z\s]{6,16}$/" >
+                <div class="party-error-message" ng-show="isPasswordDifferent && register_form.passWord2.$dirty">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >两次输入密码不一致</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span class="btn btn-default pull-right" ng-disabled="!register_form.$invalid" style="width: 70%" ng-click="userRegister()">注册</span>
+            </div>
+        </form>
     </div>
 
-    <!-- 可以屏蔽下面的自动填表 -->
-    <input type="password" style="display:none">
-
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="password1">输入密码:</label>
-        <input name="passWord1"
-               id="passWord1"
-               ng-model="passWord1"
-               required
-               type="password"
-               class="input-box"
-               placeholder="手机/邮箱"
-               ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z\s]{6,16}$/" >
-        <div class="party-error-message" ng-show="register_form.passWord1.$error.pattern">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >密码长度为6-16，至少包含字母、数字，区分大小写</small>
+    <div ng-show="isUserRegisterFinish" class="form-horizontal base-margin-auto" style="width: 400px;">
+        <div class="clearfix base-margin-10-bottom">
+            <p class="text-center pull-right" style="width: 70%; font-size: 25px">完善信息</p>
         </div>
-    </div>
 
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="passWord2">再次输入密码:</label>
-        <input name="passWord2"
-               id="passWord2"
-               ng-model="passWord2"
-               required
-               type="password"
-               class="input-box"
-               placeholder="手机/邮箱"
-               ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z\s]{6,16}$/" >
-        <div class="party-error-message" ng-show="isPasswordDifferent && register_form.passWord2.$dirty">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >两次输入密码不一致</small>
-        </div>
-    </div>
+        <form name="improve_form" class="form-horizontal base-margin-auto" style="width: 400px;">
+            <div class="form-group party-input-box" >
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="nickname">昵称:</label>
+                <input name="nickname"
+                       id="nickname"
+                       ng-model="nickname"
+                       required
+                       class="input-box"
+                       placeholder="请输入您的昵称"
+                       ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
+                       ng-blur="nickname_blur = true"
+                       ng-focus="nickname_blur = false">
+                <div class="party-error-message" ng-show="improve_form.nickname.$error.pattern && nickname_blur">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >请输入正确的手机号或邮箱</small>
+                </div>
+            </div>
 
-    <div class="form-group">
-        <span class="btn btn-default pull-right" ng-disabled="!register_form.$invalid" style="width: 70%">注册</span>
-    </div>
-</form>
+            <div class="form-group party-input-box" >
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="gender">性别:</label>
+                <input name="gender"
+                       id="gender"
+                       ng-model="gender"
+                       required
+                       class="input-box"
+                       placeholder="请输入您的性别"
+                       ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
+                       ng-blur="gender_blur = true"
+                       ng-focus="gender_blur = false">
+                <div class="party-error-message" ng-show="improve_form.gender.$error.pattern && gender_blur">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >请输入正确的手机号或邮箱</small>
+                </div>
+            </div>
 
-<form name="improve_form" class="form-horizontal base-margin-auto" style="width: 400px; margin-top: 200px">
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="userName">账号:</label>
-        <input name="nickname"
-               id="nickname"
-               ng-model="nickname"
-               required
-               class="input-box"
-               placeholder="手机/邮箱"
-               ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
-               ng-blur="userName_blur = true"
-               ng-focus="userName_blur = false">
-        <div class="party-error-message" ng-show="improve_form.userName.$error.pattern && userName_blur">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >请输入正确的手机号或邮箱</small>
-        </div>
-    </div>
+            <div class="form-group party-input-box" >
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="brief">简介:</label>
+                <input name="brief"
+                       id="brief"
+                       ng-model="brief"
+                       required
+                       class="input-box"
+                       placeholder="写点什么吧亲~"
+                       ng-pattern="/(^1[0-9]{10}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/"
+                       ng-blur="brief_blur = true"
+                       ng-focus="brief_blur = false">
+                <div class="party-error-message" ng-show="improve_form.brief.$error.pattern && brief_blur">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >请输入正确的手机号或邮箱</small>
+                </div>
+            </div>
 
-    <!-- 可以屏蔽下面的自动填表 -->
-    <input type="password" style="display:none">
-
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="password1">输入密码:</label>
-        <input name="passWord1"
-               id="passWord1"
-               ng-model="passWord1"
-               required
-               type="password"
-               class="input-box"
-               placeholder="手机/邮箱"
-               ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z\s]{6,16}$/" >
-        <div class="party-error-message" ng-show="improve_form.passWord1.$error.pattern">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >密码长度为6-16，至少包含字母、数字，区分大小写</small>
-        </div>
+            <div class="form-group">
+                <span class="btn btn-default pull-right" ng-disabled="!improve_form.$invalid" style="width: 70%" ng-click="completeInfo()">完成</span>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="passWord2">再次输入密码:</label>
-        <input name="passWord2"
-               id="passWord2"
-               ng-model="passWord2"
-               required
-               type="password"
-               class="input-box"
-               placeholder="手机/邮箱"
-               ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z\s]{6,16}$/" >
-        <div class="party-error-message" ng-show="isPasswordDifferent && improve_form.passWord2.$dirty">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >两次输入密码不一致</small>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <span class="btn btn-default pull-right" ng-disabled="!improve_form.$invalid" style="width: 70%">注册</span>
-    </div>
-</form>

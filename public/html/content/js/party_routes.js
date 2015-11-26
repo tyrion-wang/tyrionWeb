@@ -3,6 +3,7 @@
  */
 party.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     $urlRouterProvider.when("", "/home");
+    $httpProvider.defaults.withCredentials = true;
     /**
      * @return {string}
      */
