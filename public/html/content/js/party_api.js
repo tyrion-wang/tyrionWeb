@@ -8,7 +8,8 @@ party.factory("api", function ($http) {
 
     return {
         passport: {
-            check: function (data) { return $http.get(getApi("user/check"), { params: data }); },
+            checkAccount: function (data) { return $http.get(getApi("user/check_account"), { params: data }); },
+            checkNickname: function (data) { return $http.get(getApi("user/check_nickname"), { params: data }); },
             reginster: function (data) { return $http.post(getApi("user/create"), data); },
             login: function (data) { return $http.post(getApi("api/users/login"), data); }
         }

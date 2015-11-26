@@ -64,14 +64,14 @@ party.directive('widgetImputBox', [function() {
     }
 }]);
 
-//判断焦点
+//检查账户重名
 party.directive('myCheckAccount', [function() {
     return {
         restrict: 'A',
         require: 'ngModel',
         controller: function($scope, $element, api) {
             $scope.check = function(email, cellphone, callback){
-                api.passport.check({'email': email, 'cellphone': cellphone}).then(function(result){
+                api.passport.checkAccount({'email': email, 'cellphone': cellphone}).then(function(result){
                     callback(result);
                 });
             }
@@ -88,6 +88,38 @@ party.directive('myCheckAccount', [function() {
                 }
                 g_log('cellphone', cellphone);
                 $scope.check(email, cellphone, function(result){
+                    g_log('result', result);
+                    if(result.data.code == 1){
+                        $ctrl.$error.occupied = true;
+                    }else{
+                        $ctrl.$error.occupied = false;
+                    }
+                });
+
+            });
+        }
+    }
+}]);
+
+//检查昵称重名
+party.directive('myCheckNickname', [function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        controller: function($scope, $element, api) {
+            $scope.check = function(nickname, callback){
+                api.passport.checkNickname({'nickname': nickname}).then(function(result){
+                    callback(result);
+                });
+            }
+        },
+        link: function($scope, $element, $attrs, $ctrl, api) {
+            $element.bind('focus', function() {
+                $ctrl.$error.occupied = false;
+            }).bind('blur', function() {
+                var nickname = $scope.nickname;
+                g_log('nickname', nickname);
+                $scope.check(nickname, function(result){
                     g_log('result', result);
                     if(result.data.code == 1){
                         $ctrl.$error.occupied = true;

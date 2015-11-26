@@ -93,11 +93,11 @@ class UserController < BaseController
     # render :json => {code: 0, name: name, password:password, email: email, cellphone: cellphone, gender: gender, age: age, brief: brief, portrait_img: portrait_img, msg: t(:user_create_successed)} and return
   end
 
-  def check
-    email     = params[:email]
+  def check_account
+    email = params[:email]
     cellphone = params[:cellphone]
     if email.blank? && cellphone.blank?
-      render :json => {code: 0, msg: t(:user_check_error)} and return
+      render :json => {code: 0, msg: t(:user_check_account_error)} and return
     end
 
     if email
@@ -111,4 +111,19 @@ class UserController < BaseController
     end
     render :json => {code: 1, msg: t(:user_name_occupied)} and return
   end
+
+  def check_nickname
+    nickname = params[:nickname]
+    if nickname.blank?
+      render :json => {code: 0, msg: t(:user_check_nickname_error)} and return
+    end
+
+    user = User.find_by_name nickname
+
+    if user.blank?
+      render :json => {code: 0, msg: t(:user_nickname_usable)} and return
+    end
+    render :json => {code: 1, msg: t(:user_nickname_occupied)} and return
+  end
+
 end

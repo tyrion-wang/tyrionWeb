@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'user/login'
 
   get 'user/create'
-  get 'user/check'
-
+  get 'user/check_account'
+  get 'user/check_nickname'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
