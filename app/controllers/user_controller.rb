@@ -42,7 +42,7 @@ class UserController < BaseController
       render :json => {code:1, result: RESULT[:failed], msg: t(:users_name_empty)} and return
     end
 
-    if name.to_s.length > 10
+    if name.to_s.length > 20
       render :json => {code: 1,result: RESULT[:failed], msg: t(:user_name_too_long)} and return
     end
 
@@ -81,8 +81,12 @@ class UserController < BaseController
     user = User.new
     user.name = name.strip
     user.password = password.strip
-    user.email = email.strip
-    user.cellphone = cellphone.strip
+    if !email.blank?
+      user.email = email.strip
+    end
+    if !cellphone.blank?
+      user.cellphone = cellphone.strip
+    end
     user.gender = gender
     user.age = age
     user.brief = brief.strip

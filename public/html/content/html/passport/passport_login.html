@@ -1,42 +1,55 @@
-<form name="setting_form" class="form-horizontal base-margin-auto" style="width: 400px; margin-top: 200px">
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="userName">账号:</label>
-        <input name="userName"
-               id="userName"
-               ng-model="userName"
-               required
-               class="input-box"
-               placeholder="手机/邮箱">
+<div ng-hide="isLogin" class="form-horizontal base-margin-auto" style="width: 400px; margin-top: 200px">
+    <div class="clearfix base-margin-10-bottom">
+        <p class="text-center pull-right party-color-gray-light" style="width: 70%; font-size: 25px">用户登录</p>
     </div>
-
-    <!-- 可以屏蔽下面的自动填表 -->
-    <input type="password" style="display:none">
-
-    <div class="form-group party-input-box" >
-        <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="password1">输入密码:</label>
-        <input name="passWord1"
-               id="passWord1"
-               ng-model="passWord1"
-               required
-               type="password"
-               class="input-box"
-               placeholder="输入密码" >
-        <div class="party-error-message" ng-show="setting_form.passWord1.$error.pattern">
-            <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-            <small >密码长度为6-16，至少包含字母、数字，区分大小写</small>
+    <form ng-submit="login()" name="setting_form" >
+        <div class="form-group party-input-box" >
+            <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="account">账号:</label>
+            <input name="account"
+                   id="account"
+                   ng-model="account"
+                   required
+                   class="input-box"
+                   placeholder="手机/邮箱">
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="pull-right" style="width: 70%;">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> 下次自动登录
-                </label>
+        <!-- 可以屏蔽下面的自动填表 -->
+        <input type="password" style="display:none">
+
+        <div class="form-group party-input-box" >
+            <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="password">输入密码:</label>
+            <input name="password"
+                   id="password"
+                   ng-model="password"
+                   required
+                   type="password"
+                   class="input-box"
+                   placeholder="输入密码" >
+            <div class="party-error-message" ng-show="setting_form.passWord1.$error.pattern">
+                <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                <small >密码长度为6-16，至少包含字母、数字，区分大小写</small>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <span class="btn btn-default pull-right" style="width: 70%">登录</span>
-    </div>
-</form>
+
+        <div class="form-group">
+            <div class="pull-right" style="width: 70%;">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 下次自动登录
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default pull-right" style="width: 70%">登录</button>
+        </div>
+    </form>
+</div>
+
+<div class="container" ng-show="isLogin" style="width: 400px; margin-top: 200px">
+    <p>昵称：{{nickname}}</p>
+    <p ng-hide="email == null">邮箱：{{email}}</p>
+    <p ng-hide="cellphone == null">手机：{{cellphone}}</p>
+    <p>性别：{{gender}}</p>
+    <p>简介：{{brief}}</p>
+</div>

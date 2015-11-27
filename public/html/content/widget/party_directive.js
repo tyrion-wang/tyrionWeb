@@ -70,7 +70,7 @@ party.directive('myCheckAccount', [function() {
         restrict: 'A',
         require: 'ngModel',
         controller: function($scope, $element, api) {
-            $scope.check = function(email, cellphone, callback){
+            $scope.widgetCheckAccount = function(email, cellphone, callback){
                 api.passport.checkAccount({'email': email, 'cellphone': cellphone}).then(function(result){
                     callback(result);
                 });
@@ -79,6 +79,7 @@ party.directive('myCheckAccount', [function() {
         link: function($scope, $element, $attrs, $ctrl, api) {
             $element.bind('focus', function() {
                 $ctrl.$error.occupied = false;
+                $scope.accountOK = false;
             }).bind('blur', function() {
                 var account = $scope.account + '';
                 if(account.indexOf('@') != -1){
@@ -86,13 +87,15 @@ party.directive('myCheckAccount', [function() {
                 }else{
                     var cellphone = $scope.account;
                 }
-                g_log('cellphone', cellphone);
-                $scope.check(email, cellphone, function(result){
-                    g_log('result', result);
+                //g_log('cellphone', cellphone);
+                $scope.widgetCheckAccount(email, cellphone, function(result){
+                    //g_log('result', result);
                     if(result.data.code == 1){
                         $ctrl.$error.occupied = true;
+                        $scope.accountOK = false;
                     }else{
                         $ctrl.$error.occupied = false;
+                        $scope.accountOK = true;
                     }
                 });
 
@@ -107,7 +110,7 @@ party.directive('myCheckNickname', [function() {
         restrict: 'A',
         require: 'ngModel',
         controller: function($scope, $element, api) {
-            $scope.check = function(nickname, callback){
+            $scope.widgetCheckNickname = function(nickname, callback){
                 api.passport.checkNickname({'nickname': nickname}).then(function(result){
                     callback(result);
                 });
@@ -116,15 +119,18 @@ party.directive('myCheckNickname', [function() {
         link: function($scope, $element, $attrs, $ctrl, api) {
             $element.bind('focus', function() {
                 $ctrl.$error.occupied = false;
+                $scope.nicknameOK = false;
             }).bind('blur', function() {
                 var nickname = $scope.nickname;
                 g_log('nickname', nickname);
-                $scope.check(nickname, function(result){
+                $scope.widgetCheckNickname(nickname, function(result){
                     g_log('result', result);
                     if(result.data.code == 1){
                         $ctrl.$error.occupied = true;
+                        $scope.nicknameOK = false;
                     }else{
                         $ctrl.$error.occupied = false;
+                        $scope.nicknameOK = true;
                     }
                 });
 

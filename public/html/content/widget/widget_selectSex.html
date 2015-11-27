@@ -7,10 +7,10 @@
            ng-blur="hide()"
            readonly="readonly"/>
     <!--<p class="pa-ico-down" style="position: absolute; right: 0; margin-right: 80px; margin-top: -28px"></p>-->
-    <div class="pull-right" style="position: relative; width: 70%" ng-if="isShowList">
+    <div class="pull-right base-margin-10-bottom base-border-1-horizontal base-border-1-bottom" style="position: relative; width: 70%" ng-if="isShowList">
         <div ng-repeat="sex in sexGroup">
             <div class="epd-cursor-pointer pa-select-item" ng-click="select(sex)" style="height: 40px;">
-                <p style="line-height:40px;">{{sex.value}}</p>
+                <p class="base-padding-10-left party-color-gray-dark" style="line-height:40px;">{{sex.value}}</p>
             </div>
         </div>
     </div>

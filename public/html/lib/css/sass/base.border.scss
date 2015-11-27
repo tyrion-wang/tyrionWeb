@@ -1,5 +1,6 @@
+@import "base.color";
 $border_types: -left, -right, -top, -bottom;
-$border_colors: ('': black, -red: darkred, -yellow: gold, -blue: dodgerblue);
+$border_colors: ('': $gray-light, -red: darkred, -yellow: gold, -blue: dodgerblue);
 $border_range: 3;
 
 @for $size from 1 through $border_range {
@@ -12,6 +13,14 @@ $border_range: 3;
       .base-border-#{$size}#{$colorName}#{$type} {
         border#{$type}: $size * 1px solid #{$colorValue};
       }
+    }
+    .base-border-#{$size}#{$colorName}-horizontal {
+      border-left: $size * 1px solid #{$colorValue};
+      border-right: $size * 1px solid #{$colorValue};
+    }
+    .base-border-#{$size}#{$colorName}-vertical {
+      border-top: $size * 1px solid #{$colorValue};
+      border-bottom: $size * 1px solid #{$colorValue};
     }
   }
 }

@@ -1,3 +1,21 @@
+.party-color-red-error {
+  color: #ff7c68; }
+
+.party-color-gray-light {
+  color: #aaaaaa; }
+
+.party-color-gray-dark {
+  color: #777777; }
+
+.party-color-red-error {
+  color: #ff7c68; }
+
+.party-color-gray-light {
+  color: #aaaaaa; }
+
+.party-color-gray-dark {
+  color: #777777; }
+
 .base-font-small {
   font-size: 12px;
   color: #aaaaaa; }
@@ -17,6 +35,24 @@
 .base-font-huge {
   font-size: 20px;
   color: #aaaaaa; }
+
+.party-color-red-error {
+  color: #ff7c68; }
+
+.party-color-gray-light {
+  color: #aaaaaa; }
+
+.party-color-gray-dark {
+  color: #777777; }
+
+.party-color-red-error {
+  color: #ff7c68; }
+
+.party-color-gray-light {
+  color: #aaaaaa; }
+
+.party-color-gray-dark {
+  color: #777777; }
 
 .base-font-small {
   font-size: 12px;
@@ -44,20 +80,32 @@
   font-size: 14px;
   border: 1px solid gainsboro;
   border-radius: 1px;
-  padding-left: 10px; }
+  padding-left: 10px;
+  color: #aaaaaa; }
 
 .input-box:hover {
-  border: 1px solid #aaaaaa; }
+  border: 1px solid #aaaaaa;
+  color: #777777; }
 
 .input-box:focus {
   border: 1px solid #aaaaaa;
-  outline: none; }
+  outline: none;
+  color: #777777; }
 
 .party-nav li {
   cursor: pointer; }
 
 .party-nav li:hover span {
   color: black; }
+
+.party-color-red-error {
+  color: #ff7c68; }
+
+.party-color-gray-light {
+  color: #aaaaaa; }
+
+.party-color-gray-dark {
+  color: #777777; }
 
 .party-error-message {
   height: 23px;

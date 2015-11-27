@@ -11,7 +11,8 @@ party.factory("api", function ($http) {
             checkAccount: function (data) { return $http.get(getApi("user/check_account"), { params: data }); },
             checkNickname: function (data) { return $http.get(getApi("user/check_nickname"), { params: data }); },
             reginster: function (data) { return $http.post(getApi("user/create"), data); },
-            login: function (data) { return $http.post(getApi("api/users/login"), data); }
+            reginster_get: function (data) { return $http.get(getApi("user/create"), { params: data }); },
+            login: function (data) { return $http.get(getApi("user/login"), { params: data }); }
         }
     };
 });

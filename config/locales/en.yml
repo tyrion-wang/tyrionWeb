@@ -21,7 +21,7 @@
 
 en:
 #注册
-  user_name_too_long:         "用户名不能超过10个字符"
+  user_name_too_long:         "用户名不能超过20个字符"
   users_name_empty:           "用户名不能为空"
   email_or_phone:             "注册需要使用邮箱或者手机号"
   user_create_successed:      "用户创建成功"

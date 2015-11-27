@@ -1386,19 +1386,27 @@
   cursor: pointer; }
 
 .base-border-1 {
-  border: 1px solid black; }
+  border: 1px solid #aaaaaa; }
 
 .base-border-1-left {
-  border-left: 1px solid black; }
+  border-left: 1px solid #aaaaaa; }
 
 .base-border-1-right {
-  border-right: 1px solid black; }
+  border-right: 1px solid #aaaaaa; }
 
 .base-border-1-top {
-  border-top: 1px solid black; }
+  border-top: 1px solid #aaaaaa; }
 
 .base-border-1-bottom {
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid #aaaaaa; }
+
+.base-border-1-horizontal {
+  border-left: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa; }
+
+.base-border-1-vertical {
+  border-top: 1px solid #aaaaaa;
+  border-bottom: 1px solid #aaaaaa; }
 
 .base-border-1-red {
   border: 1px solid darkred; }
@@ -1413,6 +1421,14 @@
   border-top: 1px solid darkred; }
 
 .base-border-1-red-bottom {
+  border-bottom: 1px solid darkred; }
+
+.base-border-1-red-horizontal {
+  border-left: 1px solid darkred;
+  border-right: 1px solid darkred; }
+
+.base-border-1-red-vertical {
+  border-top: 1px solid darkred;
   border-bottom: 1px solid darkred; }
 
 .base-border-1-yellow {
@@ -1430,6 +1446,14 @@
 .base-border-1-yellow-bottom {
   border-bottom: 1px solid gold; }
 
+.base-border-1-yellow-horizontal {
+  border-left: 1px solid gold;
+  border-right: 1px solid gold; }
+
+.base-border-1-yellow-vertical {
+  border-top: 1px solid gold;
+  border-bottom: 1px solid gold; }
+
 .base-border-1-blue {
   border: 1px solid dodgerblue; }
 
@@ -1445,20 +1469,36 @@
 .base-border-1-blue-bottom {
   border-bottom: 1px solid dodgerblue; }
 
+.base-border-1-blue-horizontal {
+  border-left: 1px solid dodgerblue;
+  border-right: 1px solid dodgerblue; }
+
+.base-border-1-blue-vertical {
+  border-top: 1px solid dodgerblue;
+  border-bottom: 1px solid dodgerblue; }
+
 .base-border-2 {
-  border: 2px solid black; }
+  border: 2px solid #aaaaaa; }
 
 .base-border-2-left {
-  border-left: 2px solid black; }
+  border-left: 2px solid #aaaaaa; }
 
 .base-border-2-right {
-  border-right: 2px solid black; }
+  border-right: 2px solid #aaaaaa; }
 
 .base-border-2-top {
-  border-top: 2px solid black; }
+  border-top: 2px solid #aaaaaa; }
 
 .base-border-2-bottom {
-  border-bottom: 2px solid black; }
+  border-bottom: 2px solid #aaaaaa; }
+
+.base-border-2-horizontal {
+  border-left: 2px solid #aaaaaa;
+  border-right: 2px solid #aaaaaa; }
+
+.base-border-2-vertical {
+  border-top: 2px solid #aaaaaa;
+  border-bottom: 2px solid #aaaaaa; }
 
 .base-border-2-red {
   border: 2px solid darkred; }
@@ -1473,6 +1513,14 @@
   border-top: 2px solid darkred; }
 
 .base-border-2-red-bottom {
+  border-bottom: 2px solid darkred; }
+
+.base-border-2-red-horizontal {
+  border-left: 2px solid darkred;
+  border-right: 2px solid darkred; }
+
+.base-border-2-red-vertical {
+  border-top: 2px solid darkred;
   border-bottom: 2px solid darkred; }
 
 .base-border-2-yellow {
@@ -1490,6 +1538,14 @@
 .base-border-2-yellow-bottom {
   border-bottom: 2px solid gold; }
 
+.base-border-2-yellow-horizontal {
+  border-left: 2px solid gold;
+  border-right: 2px solid gold; }
+
+.base-border-2-yellow-vertical {
+  border-top: 2px solid gold;
+  border-bottom: 2px solid gold; }
+
 .base-border-2-blue {
   border: 2px solid dodgerblue; }
 
@@ -1505,20 +1561,36 @@
 .base-border-2-blue-bottom {
   border-bottom: 2px solid dodgerblue; }
 
+.base-border-2-blue-horizontal {
+  border-left: 2px solid dodgerblue;
+  border-right: 2px solid dodgerblue; }
+
+.base-border-2-blue-vertical {
+  border-top: 2px solid dodgerblue;
+  border-bottom: 2px solid dodgerblue; }
+
 .base-border-3 {
-  border: 3px solid black; }
+  border: 3px solid #aaaaaa; }
 
 .base-border-3-left {
-  border-left: 3px solid black; }
+  border-left: 3px solid #aaaaaa; }
 
 .base-border-3-right {
-  border-right: 3px solid black; }
+  border-right: 3px solid #aaaaaa; }
 
 .base-border-3-top {
-  border-top: 3px solid black; }
+  border-top: 3px solid #aaaaaa; }
 
 .base-border-3-bottom {
-  border-bottom: 3px solid black; }
+  border-bottom: 3px solid #aaaaaa; }
+
+.base-border-3-horizontal {
+  border-left: 3px solid #aaaaaa;
+  border-right: 3px solid #aaaaaa; }
+
+.base-border-3-vertical {
+  border-top: 3px solid #aaaaaa;
+  border-bottom: 3px solid #aaaaaa; }
 
 .base-border-3-red {
   border: 3px solid darkred; }
@@ -1533,6 +1605,14 @@
   border-top: 3px solid darkred; }
 
 .base-border-3-red-bottom {
+  border-bottom: 3px solid darkred; }
+
+.base-border-3-red-horizontal {
+  border-left: 3px solid darkred;
+  border-right: 3px solid darkred; }
+
+.base-border-3-red-vertical {
+  border-top: 3px solid darkred;
   border-bottom: 3px solid darkred; }
 
 .base-border-3-yellow {
@@ -1550,6 +1630,14 @@
 .base-border-3-yellow-bottom {
   border-bottom: 3px solid gold; }
 
+.base-border-3-yellow-horizontal {
+  border-left: 3px solid gold;
+  border-right: 3px solid gold; }
+
+.base-border-3-yellow-vertical {
+  border-top: 3px solid gold;
+  border-bottom: 3px solid gold; }
+
 .base-border-3-blue {
   border: 3px solid dodgerblue; }
 
@@ -1563,6 +1651,14 @@
   border-top: 3px solid dodgerblue; }
 
 .base-border-3-blue-bottom {
+  border-bottom: 3px solid dodgerblue; }
+
+.base-border-3-blue-horizontal {
+  border-left: 3px solid dodgerblue;
+  border-right: 3px solid dodgerblue; }
+
+.base-border-3-blue-vertical {
+  border-top: 3px solid dodgerblue;
   border-bottom: 3px solid dodgerblue; }
 
 .base-img-circle-small {

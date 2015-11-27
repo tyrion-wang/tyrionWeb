@@ -1,2 +1,15 @@
 $red-error: #ff7c68;
 $gray-light: #aaaaaa;
+$gray-dark: #777777;
+
+.party-color-red-error{
+  color: $red-error;
+}
+
+.party-color-gray-light{
+  color: $gray-light;
+}
+
+.party-color-gray-dark{
+  color: $gray-dark;
+}

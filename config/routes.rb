@@ -4,9 +4,21 @@ Rails.application.routes.draw do
   get 'user/login'
 
   get 'user/create'
+  post 'user/create'
   get 'user/check_account'
   get 'user/check_nickname'
 
+
+  # resources :user do
+  #   member do
+  #     get 'short'
+  #     post 'toggle'
+  #   end
+  #
+  #   collection do
+  #     get 'sold'
+  #   end
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

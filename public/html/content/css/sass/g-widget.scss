@@ -8,13 +8,16 @@
   border: 1px solid gainsboro;
   border-radius: 1px;
   padding-left: 10px;
+  color: $gray-light;
 }
 
 .input-box:hover{
   border: 1px solid $gray-light;
+  color: $gray-dark;
 }
 
 .input-box:focus{
   border: 1px solid $gray-light;
   outline:none;
+  color: $gray-dark;
 }

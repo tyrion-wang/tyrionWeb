@@ -4,7 +4,7 @@
 }
 
 .pa-select-box:focus{
-    border: 2px solid black;
+    border: 2px solid lightblue;
 }
 
 .pa-select-item{
@@ -17,11 +17,11 @@
 }
 
 .pa-select-item:hover{
-    background-color: black;
+    background-color: lightblue;
 }
 
 .pa-select-item:hover > p{
-   color: white;
+   color: #777777;
 }
 
 .pa-address-item{
