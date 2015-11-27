@@ -50,6 +50,6 @@
     <p>昵称：{{nickname}}</p>
     <p ng-hide="email == null">邮箱：{{email}}</p>
     <p ng-hide="cellphone == null">手机：{{cellphone}}</p>
-    <p>性别：{{gender}}</p>
-    <p>简介：{{brief}}</p>
+    <p>性别：{{gender|filter_gender}}</p>
+    <p ng-hide="brief == 'null' || brief == null">简介：{{brief}}</p>
 </div>

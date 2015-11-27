@@ -70,10 +70,6 @@ class UserController < BaseController
       render :json => {code: 1,result: RESULT[:failed], msg: t(:user_age_error)} and return
     end
 
-    if brief.blank?
-      brief='null';
-    end
-
     if portrait_img.blank?
       portrait_img='img_default_portrait.png';
     end
@@ -89,7 +85,10 @@ class UserController < BaseController
     end
     user.gender = gender
     user.age = age
-    user.brief = brief.strip
+    if !brief.blank?
+      user.brief = brief.strip
+    end
+
     user.portrait_img = portrait_img.strip
 
     user.save!
