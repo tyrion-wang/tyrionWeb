@@ -64,7 +64,7 @@ party.controller('party_passport_register_controller', function($scope, api, $st
         }
 
         if($scope.passWord2 == $scope.passWord1){
-            api.passport.reginster_get({name: $scope.nickname, password: $scope.passWord2, email: email, cellphone: cellphone, gender: $scope.gender, brief: $scope.brief}).then(function(result){
+            api.passport.reginster({name: $scope.nickname, password: $scope.passWord2, email: email, cellphone: cellphone, gender: $scope.gender, brief: $scope.brief}).then(function(result){
                 g_log('注册结果', result)
                 if(result.data.code == 0){
                     //$state.go('home');

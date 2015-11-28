@@ -173,6 +173,8 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.0.2, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.2.4, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="raindrops (v0.15.0, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v10.4.2, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.2.0, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rvm1-capistrano3 (v1.4.0, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.19, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.4, RVM: ruby-2.2.1 (1)) [gem]" level="application" />
