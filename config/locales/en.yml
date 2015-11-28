@@ -29,6 +29,7 @@ en:
   user_age_error:             "年龄只能为0-99之间的数字"
   user_gender_error:          "性别只能是0，1，2"
   user_name_occupied:         "此用户名已被占用"
+  user_account_occupied:         "该账号已被占用"
   user_name_usable:           "可以使用这个用户名"
   user_check_account_error:   "手机号或邮箱不能为空"
   user_check_nickname_error:  "昵称不能为空"

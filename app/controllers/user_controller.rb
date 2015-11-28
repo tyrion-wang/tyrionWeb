@@ -12,8 +12,6 @@ class UserController < BaseController
       render :json => {code: 1,result: RESULT[:failed], msg: t(:users_password_invalid)} and return
     end
 
-    # render :json => {code: 1, email: email, cellphone: cellphone, password: password} and return
-
     if email.blank?
       loginName = cellphone.strip;
     else
@@ -52,6 +50,10 @@ class UserController < BaseController
 
     if email.blank? && cellphone.blank?
       render :json => {code:1, result: RESULT[:failed], msg: t(:email_or_phone)} and return
+    end
+
+    if User.find_account(email, cellphone)
+      render :json => {code:1, result: RESULT[:failed], msg: t(:user_account_occupied)} and return
     end
 
     if gender.blank?
@@ -93,26 +95,21 @@ class UserController < BaseController
 
     user.save!
     render :json => {code: 0, msg: t(:user_create_successed)} and return
-    # render :json => {code: 0, name: name, password:password, email: email, cellphone: cellphone, gender: gender, age: age, brief: brief, portrait_img: portrait_img, msg: t(:user_create_successed)} and return
   end
 
   def check_account
+
     email = params[:email]
     cellphone = params[:cellphone]
     if email.blank? && cellphone.blank?
       render :json => {code: 0, msg: t(:user_check_account_error)} and return
     end
 
-    if email
-      user = User.find_by_email email
+    if User.find_account(email, cellphone)
+      render :json => {code: 1, msg: t(:user_name_occupied)} and return
     else
-      user = User.find_by_cellphone cellphone
-    end
-
-    if user.blank?
       render :json => {code: 0, msg: t(:user_name_usable)} and return
     end
-    render :json => {code: 1, msg: t(:user_name_occupied)} and return
   end
 
   def check_nickname
