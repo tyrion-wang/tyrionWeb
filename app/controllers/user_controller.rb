@@ -142,7 +142,7 @@ class UserController < BaseController
       render :json => {code: 1,result: RESULT[:failed], msg: t(:user_no_session)} and return
     end
     user = User.find session[:user_id]
-    render :json => {code: 0,result: RESULT[:ok], user: user.private_info}
+    render :json => {code: 0,result: RESULT[:ok], user: user.private_info} and return
   end
 
   def logout
