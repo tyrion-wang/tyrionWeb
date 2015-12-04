@@ -3,6 +3,7 @@ class UserController < BaseController
     email     = params[:email]
     cellphone = params[:cellphone]
     password  = params[:password]
+    remember  = params[:remember].to_i
 
     if email.blank? && cellphone.blank?
       render :json => {code:1, result: RESULT[:failed], msg: t(:login_email_or_phone)} and return
@@ -23,6 +24,16 @@ class UserController < BaseController
     unless user
       render :json => {code: 1,result: RESULT[:failed], msg: t(:users_login_failed)} and return
     end
+
+    session[:user_id] = user.id
+    session[:name] = user.name
+    if remember == 1
+      session[:remember] = true
+      session[:expires] = 30.days.from_now.to_i # 设置session超时时间
+    else
+      session[:expires] = MOBILE_EXPIRE_TIME.from_now.to_i # 设置session超时时间
+    end
+
     render :json => {code: 0, user: user} and return
   end
 
@@ -60,7 +71,7 @@ class UserController < BaseController
       gender=0;
     end
 
-    unless User.test_gender(gender.to_s)
+    unless User.test_gender(gender)
       render :json => {code: 1,result: RESULT[:failed], msg: t(:user_gender_error)} and return
     end
 
@@ -68,7 +79,7 @@ class UserController < BaseController
       age=0;
     end
 
-    unless User.test_age(age.to_s)
+    unless User.test_age(age)
       render :json => {code: 1,result: RESULT[:failed], msg: t(:user_age_error)} and return
     end
 
@@ -124,6 +135,66 @@ class UserController < BaseController
       render :json => {code: 0, msg: t(:user_nickname_usable)} and return
     end
     render :json => {code: 1, msg: t(:user_nickname_occupied)} and return
+  end
+
+  def info
+    if session[:user_id].blank?
+      render :json => {code: 1,result: RESULT[:failed], msg: t(:user_no_session)} and return
+    end
+    user = User.find session[:user_id]
+    render :json => {code: 0,result: RESULT[:ok], user: user.private_info}
+  end
+
+  def logout
+    session.clear
+    render :json => {code: 0,result: RESULT[:ok]}
+  end
+
+  # 更新用户信息
+  def update
+    if session[:user_id].blank?
+      render :json => {code: 1,result: RESULT[:failed], msg: t(:user_no_session)} and return
+    end
+    name = params[:name]
+    gender = params[:gender]
+    age = params[:age]
+    brief = params[:brief]
+    portrait_img = params[:portrait_img]
+
+    if !name.blank? && name.length > 20
+      render :json => {code: 1,result: RESULT[:failed], msg: t(:user_name_too_long)} and return
+    end
+
+    if !gender.nil? && !User.test_gender(gender)
+      render :json => {code: 1,result: RESULT[:failed], msg: t(:user_gender_error)} and return
+    end
+
+    if !age.nil? && !User.test_age(age)
+      render :json => {code: 1,result: RESULT[:failed], msg: t(:user_age_error)} and return
+    end
+
+    if !brief.blank? && brief.length > 500
+      render :json => {code: 1,result: RESULT[:failed], msg: t(:user_brief_error)} and return
+    end
+
+
+    user = User.find session[:user_id]
+
+    user.name   = name unless name.blank?
+    user.gender = gender.to_i unless gender.blank?
+    user.age = age.to_i unless age.blank?
+    user.name   = name unless name.blank?
+    user.brief   = brief unless brief.nil?
+    if portrait_img.blank?
+      portrait_img='img_default_portrait.png';
+    end
+    user.portrait_img   = portrait_img
+    user.save!
+
+    session[:name] = user.name
+
+    render :json => {code: 0,result: RESULT[:ok], user: user.private_info}
+
   end
 
 end

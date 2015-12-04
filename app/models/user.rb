@@ -8,14 +8,18 @@ class User < ActiveRecord::Base
 
   # 性别：0保密，1男，2女
   def self.test_gender(gender)
-    test = /^(?=.*[0-2]).{1}$/ =~ gender
-    test == 0
+    if gender.to_i>2 || gender.to_i<0
+      return false
+    end
+    return true
   end
 
   # 年龄0-99
   def self.test_age(age)
-    test = /^(?=.*\d).{0,2}$/ =~ age
-    test == 0
+    if age.to_i>100 || age.to_i<0
+      return false
+    end
+    return true
   end
 
   def self.authenticate(email_or_cellphone, password)
@@ -43,5 +47,10 @@ class User < ActiveRecord::Base
       return false
     end
     return true
+  end
+
+  def private_info
+    info = self.slice :id, :email, :cellphone, :name, :gender, :age, :brief, :portrait_img
+    info
   end
 end

@@ -8,6 +8,8 @@ IS_STAGING = true
 # 跨域域名
 ACCESS_CONTROL_ALLOW_ORIGIN = 'https://www.party.com'
 
+MOBILE_EXPIRE_TIME = 3.days # APP超时时间
+
 class BaseController < ActionController::Base
 
   before_filter :cors_set_access_control_headers, :cors_preflight_check

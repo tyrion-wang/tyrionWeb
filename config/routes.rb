@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       post 'create'
       get 'check_account'
       get 'check_nickname'
+      get 'info'
+      post 'logout'
+      post 'update'
     end
   end
 
