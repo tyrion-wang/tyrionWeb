@@ -40,6 +40,17 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :web_api do
+    resources :guest do
+      collection do
+        get 'test'
+        post 'test'
+        put 'test'
+        delete 'test'
+      end
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
