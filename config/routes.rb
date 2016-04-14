@@ -16,6 +16,27 @@ Rails.application.routes.draw do
   resources :guest do
     collection do
       get 'test'
+      post 'test'
+      put 'test'
+      delete 'test'
+    end
+  end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  namespace :api do
+    resources :guest do
+      collection do
+        get 'test'
+        post 'test'
+        put 'test'
+        delete 'test'
+      end
     end
   end
 
