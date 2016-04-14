@@ -9,8 +9,8 @@ set :repo_url, 'https://github.com/MapleLeaf7/tyrionWeb.git'
 set :keep_releases, 5
 set :deploy_via, :remote_cache
 
-set :user, 'maple_leaf_7@msn.com'
-set :password, 'wyf198987'
+# set :user, 'maple_leaf_7@msn.com'
+# set :password, 'wyf198987'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
