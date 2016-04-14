@@ -1,6 +1,6 @@
 class WebApi::GuestController < BaseController
   def index
-    render :json => {code: 1, msg: 'api.guest.index', data: "GuestController in api"} and return
+    render :json => {code: 1, msg: 'api.guest.index', data: "GuestController in web_api"} and return
   end
 
   def test
