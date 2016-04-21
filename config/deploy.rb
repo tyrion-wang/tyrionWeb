@@ -79,6 +79,15 @@ namespace :bundler do
   end
 end
 
+namespace :rank do
+  desc 'Run rank'
+  task :migrate do
+    on roles(:web) do
+      execute("cd #{deploy_to}/current;rake db:migrate")
+    end
+  end
+end
+
 namespace :unicorn do
 
   desc 'Start unicorn'
