@@ -49,6 +49,15 @@ Rails.application.routes.draw do
         delete 'test'
       end
     end
+
+    resources :schedule do
+      collection do
+        get 'create'
+        post 'create'
+
+        get 'get'
+      end
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

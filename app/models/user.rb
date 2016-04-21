@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :schedules
+
   # 数字和字母6~16位
   def self.test_simple_password(pass)
     test = /^(?=.*\d)(?=.*[a-zA-Z]).{6,16}$/ =~ pass
