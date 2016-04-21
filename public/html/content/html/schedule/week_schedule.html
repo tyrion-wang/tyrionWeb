@@ -1,0 +1,12 @@
+<div class="container" style="width: 400px; margin-top: 200px">
+    <p>This week:</p>
+    <div ng-repeat="schedule in thisWeekSchedule">
+        <p>{{schedule.name}}</p>
+    </div>
+    <br/>
+    <br/>
+    <p>Next week:</p>
+    <div ng-repeat="schedule in nextWeekSchedule">
+        <p>{{schedule.name}}</p>
+    </div>
+</div>

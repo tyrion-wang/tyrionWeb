@@ -3,7 +3,7 @@
  */
 var party = angular.module("party", ['ngCookies', 'ngMessages', 'ngAnimate', 'ui.router', 'ngDialog', 'monospaced.elastic']);
 
-var isDebug = false;
+var isDebug = true;
 var g_log = function (name, log) {
     if (isDebug) {
         if (log == undefined) {

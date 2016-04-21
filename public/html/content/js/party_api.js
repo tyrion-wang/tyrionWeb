@@ -13,6 +13,10 @@ party.factory("api", function ($http) {
             reginster: function (data) { return $http.post(getApi("user/create"), data); },
             reginster_get: function (data) { return $http.get(getApi("user/create"), { params: data }); },
             login: function (data) { return $http.get(getApi("user/login"), { params: data }); }
+        },
+        schedule: {
+            getThisWeek: function () { return $http.get(getApi("web_api/schedule/this_week")); },
+            getNextWeek: function () { return $http.get(getApi("web_api/schedule/next_week")); },
         }
     };
 });

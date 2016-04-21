@@ -1,7 +1,7 @@
 /**
  * Created by Tyrion on 15/11/24.
  */
-party.controller('party_passport_login_controller', function($scope, api){
+party.controller('party_passport_login_controller', function($scope, api, $state){
     $scope.show = true;
     $scope.isLogin = false;
     $scope.login = function(){
@@ -23,6 +23,8 @@ party.controller('party_passport_login_controller', function($scope, api){
                 $scope.cellphone = user.cellphone;
                 $scope.gender = user.gender;
                 $scope.brief = user.brief;
+
+                $state.go('home.schedule');
             }else{
                 g_log('登录失败', result);
             }

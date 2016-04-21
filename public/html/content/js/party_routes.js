@@ -65,4 +65,13 @@ party.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
                 }
             }
         })
+        .state("home.schedule", {
+            url: "/schedule",
+            views: {
+                "@home": {
+                    templateUrl: HTML_PATH('/schedule/week_schedule.html'),
+                    controller: 'party_schedule_this_week_controller'
+                }
+            }
+        })
 });
