@@ -43,7 +43,6 @@ class WebApi::ScheduleController < BaseController
 
       schedule = Schedule.new
       schedule.name = name
-      schedule.ownerId = user.id
       schedule.state = state
       schedule.created_at = create_time
 
@@ -63,7 +62,6 @@ class WebApi::ScheduleController < BaseController
       end
       user = User.find session[:user_id]
 
-      # @schedule = Schedule.find_by_ownerId user.id
       @schedule = user.schedules.where(created_at: (Time.now.midnight - Time.now.wday.day + 1.day + (week*7).day)..(Time.now.midnight + (7-Time.now.wday).day + 1.day + (week*7).day))
 
       if @schedule.blank?
