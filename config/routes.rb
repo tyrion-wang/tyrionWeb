@@ -52,10 +52,10 @@ Rails.application.routes.draw do
 
     resources :schedule do
       collection do
-        get 'create'
-        post 'create'
-
-        get 'get'
+        post 'this_week'
+        post 'next_week'
+        get 'this_week'
+        get 'next_week'
       end
     end
   end
