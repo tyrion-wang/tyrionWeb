@@ -2,8 +2,8 @@
  * Created by Tyrion on 15/11/26.
  */
 party.factory("api", function ($http) {
-    var DOMAIN_NAME = 'http://101.200.211.156/';
-    //var DOMAIN_NAME = 'http://0.0.0.0:3000/';
+    //var DOMAIN_NAME = 'http://101.200.211.156/';
+    var DOMAIN_NAME = 'http://0.0.0.0:3000/';
     var getApi = function (url) { return DOMAIN_NAME + url; };
 
     return {
@@ -17,6 +17,7 @@ party.factory("api", function ($http) {
         schedule: {
             getThisWeek: function () { return $http.get(getApi("web_api/schedule/this_week")); },
             getNextWeek: function () { return $http.get(getApi("web_api/schedule/next_week")); },
+            thisWeek: function (data) { return $http.post(getApi("web_api/schedule/this_week"), data); },
         }
     };
 });

@@ -1,4 +1,7 @@
 class UserController < BaseController
+
+  skip_before_filter :check_authenticated, :only => [:login, :create, :check_account, :check_nickname, :info, :update]
+  
   def login
     email     = params[:email]
     cellphone = params[:cellphone]

@@ -1,12 +1,54 @@
 <div class="container" style="width: 400px; margin-top: 200px">
-    <p>This week:</p>
+
+    <form name="improve_form" ng-submit="completeSchedule()">
+        <div class="form-group party-input-box" >
+            <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="schedule_content">日程:</label>
+            <input name="schedule_content"
+                   id="schedule_content"
+                   ng-model="schedule_content"
+                   required
+                   class="input-box"
+                   placeholder="输入日程"
+                   ng-maxlength="20"
+                   ng-blur="schedule_content_blur = true"
+                   ng-focus="schedule_content_blur = false">
+            <div class="party-error-message" ng-show="improve_form.schedule_content.$error.maxlength">
+                <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                <small >昵称不能超过20个字符</small>
+            </div>
+        </div>
+
+        <div class="form-group party-input-box">
+            <div class="pull-left" style="width: 100%">
+                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="state">状态:</label>
+                    <textarea name="state"
+                              id="state"
+                              ng-model="state"
+                              class="input-box"
+                              placeholder="0或1"
+                              ng-maxlength="200"
+                              ng-blur="state_blur = true"
+                              ng-focus="state_blur = false"
+                              msd-elastic rows="1" style="padding-top: 7px; padding-bottom: 7px; resize: vertical"></textarea>
+                <div class="party-error-message pull-right" ng-show="improve_form.state.$error.maxlength" style="width: 70%">
+                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
+                    <small >简介不能超过200个字符</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-default pull-right" ng-disabled="improve_form.$invalid || improve_form.schedule_content.$error.occupied" style="width: 70%">完成</button>
+        </div>
+    </form>
+    <p>本周日程:</p>
     <div ng-repeat="schedule in thisWeekSchedule">
-        <p>{{schedule.name}}</p>
+        <p>{{$index+1}}. {{schedule.name}}</p>
     </div>
     <br/>
     <br/>
-    <p>Next week:</p>
+    <p>下周日程:</p>
     <div ng-repeat="schedule in nextWeekSchedule">
-        <p>{{schedule.name}}</p>
+        <p>{{$index+1}}. {{schedule.name}}</p>
     </div>
 </div>

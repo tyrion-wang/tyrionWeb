@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dir.glob(File.dirname(__FILE__) + '/const/*.rb') {|file| require file}
+
 module TyrionWeb
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -22,5 +24,17 @@ module TyrionWeb
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+
+
+
+    # Rank-Cors 跨域设置
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins 'localhost:63343', '101.200.211.156', 'www.tyrion.wang'
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+
   end
 end

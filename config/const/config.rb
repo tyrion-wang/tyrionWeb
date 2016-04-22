@@ -1,1 +1,0 @@
-MOBILE_EXPIRE_TIME = 3.days # APP超时时间
