@@ -23,9 +23,8 @@ party.controller('party_schedule_this_week_controller', function($scope, api, $s
     $scope.completeSchedule = function(){
         g_log('completeSchedule');
         g_log($scope.schedule_content);
-        g_log($scope.state);
 
-        api.schedule.thisWeek({name:$scope.schedule_content, state:$scope.state}).then(function(result){
+        api.schedule.thisWeek({content:$scope.schedule_content}).then(function(result){
             g_log(result)
         })
 

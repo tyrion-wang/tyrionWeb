@@ -18,6 +18,7 @@ party.factory("api", function ($http) {
             getThisWeek: function () { return $http.get(getApi("web_api/schedule/this_week")); },
             getNextWeek: function () { return $http.get(getApi("web_api/schedule/next_week")); },
             thisWeek: function (data) { return $http.post(getApi("web_api/schedule/this_week"), data); },
+            nextWeek: function (data) { return $http.post(getApi("web_api/schedule/next_week"), data); },
         }
     };
 });

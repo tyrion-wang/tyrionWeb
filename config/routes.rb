@@ -56,6 +56,8 @@ Rails.application.routes.draw do
         post 'next_week'
         get 'this_week'
         get 'next_week'
+        post 'delete'
+        post 'change'
       end
     end
   end

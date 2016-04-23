@@ -18,37 +18,18 @@
             </div>
         </div>
 
-        <div class="form-group party-input-box">
-            <div class="pull-left" style="width: 100%">
-                <label class="input-name pull-left text-right base-padding-10-right base-font-normal" for="state">状态:</label>
-                    <textarea name="state"
-                              id="state"
-                              ng-model="state"
-                              class="input-box"
-                              placeholder="0或1"
-                              ng-maxlength="200"
-                              ng-blur="state_blur = true"
-                              ng-focus="state_blur = false"
-                              msd-elastic rows="1" style="padding-top: 7px; padding-bottom: 7px; resize: vertical"></textarea>
-                <div class="party-error-message pull-right" ng-show="improve_form.state.$error.maxlength" style="width: 70%">
-                    <img ng-src="{{IMG_PATH}}img_input_error@2x.png"/>
-                    <small >简介不能超过200个字符</small>
-                </div>
-            </div>
-        </div>
-
         <div class="form-group">
             <button type="submit" class="btn btn-default pull-right" ng-disabled="improve_form.$invalid || improve_form.schedule_content.$error.occupied" style="width: 70%">完成</button>
         </div>
     </form>
     <p>本周日程:</p>
     <div ng-repeat="schedule in thisWeekSchedule">
-        <p>{{$index+1}}. {{schedule.name}}</p>
+        <p>{{$index+1}}. {{schedule.content}}</p>
     </div>
     <br/>
     <br/>
     <p>下周日程:</p>
     <div ng-repeat="schedule in nextWeekSchedule">
-        <p>{{$index+1}}. {{schedule.name}}</p>
+        <p>{{$index+1}}. {{schedule.content}}</p>
     </div>
 </div>
