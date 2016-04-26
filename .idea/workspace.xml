@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c3660c6-8816-49f8-8c3c-a107a9697d26" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/js/party_api.js" afterPath="$PROJECT_DIR$/public/html/content/js/party_api.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/js/schedule/schedule_week.js" afterPath="$PROJECT_DIR$/public/html/content/js/schedule/schedule_week.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/.idea/workspace.xml" afterPath="$PROJECT_DIR$/public/html/.idea/workspace.xml" />
@@ -41,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.4327354">
-              <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+              <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -1014,7 +1015,7 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4327354">
-          <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
           <folding />
         </state>
       </provider>

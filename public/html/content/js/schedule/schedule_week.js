@@ -5,18 +5,20 @@ party.controller('party_schedule_this_week_controller', function($scope, api, $s
     api.schedule.getThisWeek().then(function(result){
         if(result.data.code == 0){
             g_log('getThisWeek', result);
-            $scope.thisWeekSchedule = result.data.data;
+            $scope.thisWeekSchedule = [];
         }else{
             g_log('getThisWeek', result);
+            $scope.thisWeekSchedule = result.data.data;
         }
     });
 
     api.schedule.getNextWeek().then(function(result){
         if(result.data.code == 0){
             g_log('getNextWeek', result);
-            $scope.nextWeekSchedule = result.data.data;
+            $scope.nextWeekSchedule = [];
         }else{
             g_log('getNextWeek', result);
+            $scope.nextWeekSchedule = result.data.data;
         }
     });
 
@@ -41,6 +43,7 @@ party.controller('party_schedule_this_week_controller', function($scope, api, $s
 
     $scope.createThisWeek = function(schedule){
         g_log('createThisWeek', schedule);
+        g_log('length', $scope.thisWeekSchedule.length);
         $scope.thisWeekSchedule[$scope.thisWeekSchedule.length] = schedule;
     }
 
