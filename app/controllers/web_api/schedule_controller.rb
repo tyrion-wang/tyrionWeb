@@ -71,7 +71,7 @@ class WebApi::ScheduleController < BaseController
     @schedule = user.schedules.where(created_at: (Time.now.midnight - Time.now.wday.day + 1.day + (week*7).day)..(Time.now.midnight + (7-Time.now.wday).day + 1.day + (week*7).day))
 
     if @schedule.blank?
-      render :json => {code: 0, msg: '未找到相符合的日程'} and return
+      render :json => {code: 0, msg: '未找到相符合的日程', data:{}} and return
     end
 
     render :json => {code: 0, data: @schedule} and return

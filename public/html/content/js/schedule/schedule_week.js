@@ -2,8 +2,6 @@
  * Created by tyrion on 16/4/21.
  */
 party.controller('party_schedule_this_week_controller', function($scope, api, $state){
-    $scope.thisWeekSchedule = [];
-    $scope.nextWeekSchedule = [];
     api.schedule.getThisWeek().then(function(result){
         if(result.data.code == 0){
             g_log('getThisWeek', result);
