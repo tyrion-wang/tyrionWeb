@@ -68,21 +68,23 @@ party.controller('widget_schedule_item_controller', function ($scope, api) {
 party.controller('widget_schedule_create_box', function ($scope, api) {
     $scope.createSchedule = function(){
         var scheduleContent = $scope.scheduleInput;
-        $scope.scheduleInput = "";
-        if($scope.week == 0){
-            g_log('本周日程', scheduleContent);
-            api.schedule.thisWeek({content:scheduleContent}).then(function(result){
-                g_log(result);
-                $scope.data = result.data;
-                $scope.create($scope.data);
-            })
-        }else if($scope.week == 1){
-            g_log('下周日程', scheduleContent);
-            api.schedule.nextWeek({content:scheduleContent}).then(function(result){
-                g_log(result);
-                $scope.data = result.data;
-                $scope.create($scope.data);
-            })
+        if(scheduleContent){
+            $scope.scheduleInput = "";
+            if($scope.week == 0){
+                g_log('本周日程', scheduleContent);
+                api.schedule.thisWeek({content:scheduleContent}).then(function(result){
+                    g_log(result);
+                    $scope.data = result.data;
+                    $scope.create($scope.data);
+                })
+            }else if($scope.week == 1){
+                g_log('下周日程', scheduleContent);
+                api.schedule.nextWeek({content:scheduleContent}).then(function(result){
+                    g_log(result);
+                    $scope.data = result.data;
+                    $scope.create($scope.data);
+                })
+            }
         }
     }
 });
