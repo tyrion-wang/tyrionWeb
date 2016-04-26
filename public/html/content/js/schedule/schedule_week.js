@@ -20,13 +20,32 @@ party.controller('party_schedule_this_week_controller', function($scope, api, $s
         }
     });
 
-    $scope.completeSchedule = function(){
-        g_log('completeSchedule');
-        g_log($scope.schedule_content);
+    $scope.delete = function(schedule){
+        g_log('delete', schedule.id);
+        var scheduleId = schedule.id;
 
-        api.schedule.thisWeek({content:$scope.schedule_content}).then(function(result){
-            g_log(result)
-        })
+        for(var i=0; i<$scope.thisWeekSchedule.length; i++){
+            if($scope.thisWeekSchedule[i].id == scheduleId){
+                $scope.thisWeekSchedule.splice(i,1);
+                return
+            }
+        }
 
-    };
+        for(var i=0; i<$scope.nextWeekSchedule.length; i++){
+            if($scope.nextWeekSchedule[i].id == scheduleId){
+                $scope.nextWeekSchedule.splice(i,1);
+                return
+            }
+        }
+    }
+
+    $scope.createThisWeek = function(schedule){
+        g_log('createThisWeek', schedule);
+        $scope.thisWeekSchedule[$scope.thisWeekSchedule.length] = schedule;
+    }
+
+    $scope.createNextWeek = function(schedule){
+        g_log('createNextWeek', schedule);
+        $scope.nextWeekSchedule[$scope.nextWeekSchedule.length] = schedule;
+    }
 });

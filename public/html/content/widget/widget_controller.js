@@ -36,3 +36,54 @@ party.controller('widget_select_sex_controller', function ($scope, $timeout, api
     });
 });
 
+//日程单条计划Item
+party.controller('widget_schedule_item_controller', function ($scope, api) {
+    $scope.schedule = JSON.parse($scope.data);
+
+    $scope.updateSelection = function($event, schedule){
+        if(schedule.isFinish){
+            schedule.isFinish = false;
+            g_log('修改为未完成')
+            api.schedule.change({id:schedule.id, isFinish:false}).then(function(result){
+                g_log(result)
+            });
+        }else{
+            schedule.isFinish = true;
+            g_log('修改为完成')
+            api.schedule.change({id:schedule.id, isFinish:true}).then(function(result){
+                g_log(result)
+            });
+        }
+    };
+
+    $scope.deleteSchedule = function(schedule){
+        g_log('deleteSchedule', schedule.id);
+        api.schedule.delete({id:schedule.id}).then(function(result){
+            $scope.delete(schedule);
+        });
+    }
+});
+
+//创建日程box
+party.controller('widget_schedule_create_box', function ($scope, api) {
+    $scope.createSchedule = function(){
+        var scheduleContent = $scope.scheduleInput;
+        $scope.scheduleInput = "";
+        if($scope.week == 0){
+            g_log('本周日程', scheduleContent);
+            api.schedule.thisWeek({content:scheduleContent}).then(function(result){
+                g_log(result);
+                $scope.data = result.data;
+                $scope.create($scope.data);
+            })
+        }else if($scope.week == 1){
+            g_log('下周日程', scheduleContent);
+            api.schedule.nextWeek({content:scheduleContent}).then(function(result){
+                g_log(result);
+                $scope.data = result.data;
+                $scope.create($scope.data);
+            })
+        }
+    }
+});
+

@@ -31,7 +31,7 @@ module TyrionWeb
     # Rank-Cors 跨域设置
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins 'localhost:63343', '101.200.211.156', 'www.tyrion.wang'
+        origins 'localhost', '101.200.211.156', 'www.tyrion.wang'
         resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end

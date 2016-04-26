@@ -47,9 +47,9 @@ class WebApi::ScheduleController < BaseController
 
     if rank.blank?
       rank = 0
-    elsif rank >= 5
+    elsif rank.to_i >= 5
       rank = 5
-    elsif rank <= 0
+    elsif rank.to_i <= 0
       rank = 0
     end
 
@@ -62,7 +62,7 @@ class WebApi::ScheduleController < BaseController
     user.schedules << schedule
     # user.schedules.save!
 
-    render :json => {code: 1, msg: '日程保存成功'} and return
+    render :json => {code: 1, msg: '日程保存成功', data:schedule} and return
   end
 
   def get(week)
@@ -90,7 +90,7 @@ class WebApi::ScheduleController < BaseController
       render :json => {code: 0, msg: '该日程不存在'} and return
     end
     user.schedules.destroy(id)
-    render :json => {code: 1, msg: '删除id=' + id + '成功'} and return
+    render :json => {code: 1, msg: '删除id=' + id.to_s + '成功'} and return
   end
 
   def change
@@ -115,7 +115,7 @@ class WebApi::ScheduleController < BaseController
       ischange = true
     end
 
-    if !isFinish.blank?
+    if !isFinish.nil?
       schedule.isFinish = isFinish
       schedule.save!
       ischange = true

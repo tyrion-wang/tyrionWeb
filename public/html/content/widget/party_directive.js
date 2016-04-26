@@ -151,3 +151,32 @@ party.directive('widgetSelectSex', [function() {
         controller:'widget_select_sex_controller'
     }
 }]);
+
+//日程单条计划Item
+party.directive('widgetScheduleItem', [function() {
+    return {
+        restrict: 'E',
+        scope:{
+            data:"@",
+            delete:"&delete"
+        },
+        require: '?ngModel',
+        templateUrl:'/html/content/widget/widget_scheduleItem.html',
+        controller:'widget_schedule_item_controller'
+    }
+}]);
+
+//日程输入框
+party.directive('widgetScheduleCreateBox', [function() {
+    return {
+        restrict: 'E',
+        scope:{
+            ngMaxlength:"@",
+            week:"@",
+            create:"&create"
+        },
+        require: '?ngModel',
+        templateUrl:'/html/content/widget/widget_scheduleCreateBox.html',
+        controller:'widget_schedule_create_box'
+    }
+}]);
