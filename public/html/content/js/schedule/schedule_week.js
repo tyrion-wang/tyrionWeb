@@ -2,6 +2,7 @@
  * Created by tyrion on 16/4/21.
  */
 party.controller('party_schedule_this_week_controller', function($scope, api, $state){
+    $scope.lastWeekSchedule = [];
     api.schedule.getThisWeek().then(function(result){
         if(result.data.code == 0){
             g_log('getThisWeek', result);
@@ -37,6 +38,13 @@ party.controller('party_schedule_this_week_controller', function($scope, api, $s
         for(var i=0; i<$scope.nextWeekSchedule.length; i++){
             if($scope.nextWeekSchedule[i].id == scheduleId){
                 $scope.nextWeekSchedule.splice(i,1);
+                return
+            }
+        }
+
+        for(var i=0; i<$scope.lastWeekSchedule.length; i++){
+            if($scope.lastWeekSchedule[i].id == scheduleId){
+                $scope.lastWeekSchedule.splice(i,1);
                 return
             }
         }
