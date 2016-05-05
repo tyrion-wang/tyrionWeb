@@ -158,6 +158,7 @@ party.directive('widgetScheduleItem', [function() {
         restrict: 'E',
         scope:{
             data:"@",
+            isEmergency:"@",
             delete:"&delete"
         },
         require: '?ngModel',

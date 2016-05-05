@@ -2,7 +2,7 @@
  * Created by Tyrion on 15/11/26.
  */
 party.factory("api", function ($http) {
-    var DOMAIN_NAME = 'http://101.200.211.156/';
+    var DOMAIN_NAME = 'http://www.tyrion.wang/';
     //var DOMAIN_NAME = 'http://0.0.0.0:3000/';
     var getApi = function (url) { return DOMAIN_NAME + url; };
 

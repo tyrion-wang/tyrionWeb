@@ -40,6 +40,11 @@ party.controller('widget_select_sex_controller', function ($scope, $timeout, api
 party.controller('widget_schedule_item_controller', function ($scope, api) {
     $scope.schedule = JSON.parse($scope.data);
 
+    if($scope.isEmergency === "true"){
+        $scope.isEmergency = true
+    }else{
+        $scope.isEmergency = false
+    }
     $scope.updateSelection = function($event, schedule){
         if(schedule.isFinish){
             schedule.isFinish = false;

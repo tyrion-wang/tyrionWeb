@@ -5,8 +5,11 @@
         </div>
         <div class="panel-body">
             <widget-schedule-create-box week="0" create="createThisWeek(data)"></widget-schedule-create-box>
+            <div ng-repeat="schedule in lastWeekSchedule">
+                <widget-schedule-item data={{schedule}} delete="delete(schedule)" is-emergency="true"></widget-schedule-item>
+            </div>
             <div ng-repeat="schedule in thisWeekSchedule">
-                <widget-schedule-item data={{schedule}} delete="delete(schedule)"></widget-schedule-item>
+                <widget-schedule-item data={{schedule}} delete="delete(schedule)" is-emergency="false"></widget-schedule-item>
             </div>
         </div>
     </div>

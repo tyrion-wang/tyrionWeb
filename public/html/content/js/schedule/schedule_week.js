@@ -8,6 +8,7 @@ party.controller('party_schedule_this_week_controller', function($scope, api, $s
             $scope.thisWeekSchedule = [];
         }else{
             g_log('getThisWeek', result);
+            $scope.lastWeekSchedule = result.data.last_week;
             $scope.thisWeekSchedule = result.data.data;
         }
     });

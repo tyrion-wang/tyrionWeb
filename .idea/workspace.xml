@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9c3660c6-8816-49f8-8c3c-a107a9697d26" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/js/party_api.js" afterPath="$PROJECT_DIR$/public/html/content/js/party_api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/widget/party_directive.js" afterPath="$PROJECT_DIR$/public/html/content/widget/party_directive.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/js/schedule/schedule_week.js" afterPath="$PROJECT_DIR$/public/html/content/js/schedule/schedule_week.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/html/schedule/week_schedule.html" afterPath="$PROJECT_DIR$/public/html/content/html/schedule/week_schedule.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/widget/widget_scheduleCreateBox.html" afterPath="$PROJECT_DIR$/public/html/content/widget/widget_scheduleCreateBox.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/widget/widget_controller.js" afterPath="$PROJECT_DIR$/public/html/content/widget/widget_controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/content/widget/widget_scheduleItem.html" afterPath="$PROJECT_DIR$/public/html/content/widget/widget_scheduleItem.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/html/.idea/workspace.xml" afterPath="$PROJECT_DIR$/public/html/.idea/workspace.xml" />
     </list>
     <ignored path="tyrionWeb.iws" />
@@ -21,7 +25,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/tyrionWeb@All_tests_in_tyrionWeb__tyrionWeb.coverage" NAME="All tests in tyrionWeb: tyrionWeb Coverage Results" MODIFIED="1447209929622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="tyrionWeb" />
-    <SUITE FILE_PATH="coverage/tyrionWeb@Development__tyrionWeb.coverage" NAME="Development: tyrionWeb Coverage Results" MODIFIED="1461634033796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="tyrionWeb" />
+    <SUITE FILE_PATH="coverage/tyrionWeb@Development__tyrionWeb.coverage" NAME="Development: tyrionWeb Coverage Results" MODIFIED="1462424837751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="tyrionWeb" />
     <SUITE FILE_PATH="coverage/tyrionWeb@db_migrate__tyrionWeb.coverage" NAME="db:migrate: tyrionWeb Coverage Results" MODIFIED="1461396995157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="tyrionWeb" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -42,8 +46,8 @@
       <file leaf-file-name="schedule_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4327354">
-              <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.23146068">
+              <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -150,7 +154,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="52" />
+    <option name="x" value="48" />
     <option name="y" value="23" />
     <option name="width" value="1232" />
     <option name="height" value="777" />
@@ -179,6 +183,7 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -314,7 +319,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -601,16 +605,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="23" width="1232" height="777" extended-state="6" />
+    <frame x="48" y="23" width="1232" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20840336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21176471" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.49663866" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32561308" sideWeight="0.50974023" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31880108" sideWeight="0.4935065" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33520338" sideWeight="0.49025974" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3347398" sideWeight="0.49025974" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.4932773" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -754,13 +758,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Rakefile">
@@ -1015,8 +1019,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/web_api/schedule_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4327354">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.23146068">
+          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
           <folding />
         </state>
       </provider>

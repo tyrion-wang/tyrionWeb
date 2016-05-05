@@ -18,7 +18,7 @@ class WebApi::ScheduleController < BaseController
       createTime = Time.now
       createSchedule(content, isFinish, createTime, rank)
     elsif request.get?
-      get(0)
+      getScheduleByWeek(0)
     end
   end
 
@@ -30,7 +30,7 @@ class WebApi::ScheduleController < BaseController
       createTime = Time.now + 7.day
       createSchedule(content, isFinish, createTime, rank)
     elsif request.get?
-      get(1)
+      getScheduleByWeek(1)
     end
   end
 
@@ -65,18 +65,42 @@ class WebApi::ScheduleController < BaseController
     render :json => {code: 1, msg: '日程保存成功', data:schedule} and return
   end
 
-  def get(week)
-    user = User.find session[:user_id]
+  def getScheduleByWeek(week)
+    @schedule = getAllSchedule(week)
+    if week == 0
+      lastWeekSchedule = getUnFinishSchedule(-1)
+    end
 
-    @schedule = user.schedules.where(created_at: (Time.now.midnight - Time.now.wday.day + 1.day + (week*7).day)..(Time.now.midnight + (7-Time.now.wday).day + 1.day + (week*7).day))
-
-    if @schedule.blank?
+    if @schedule.blank? && lastWeekSchedule.blank?
       render :json => {code: 0, msg: '未找到相符合的日程'} and return
     end
 
-    render :json => {code: 1, data: @schedule} and return
+    if week == 0
+      render :json => {code: 1, data: @schedule, last_week: lastWeekSchedule} and return
+    else
+      render :json => {code: 1, data: @schedule} and return
+    end
+
   end
-  
+
+  def getAllSchedule(week)
+    user = User.find session[:user_id]
+    schedule = user.schedules.where(created_at: (Time.now.midnight - Time.now.wday.day + 1.day + (week*7).day)..(Time.now.midnight + (7-Time.now.wday).day + 1.day + (week*7).day))
+    return schedule
+  end
+
+  def getUnFinishSchedule(week)
+    user = User.find session[:user_id]
+    schedule = user.schedules.where(isFinish: false, created_at: (Time.now.midnight - Time.now.wday.day + 1.day + (week*7).day)..(Time.now.midnight + (7-Time.now.wday).day + 1.day + (week*7).day))
+    return schedule
+  end
+
+  def getFinishSchedule(week)
+    user = User.find session[:user_id]
+    schedule = user.schedules.where(isFinish: true, created_at: (Time.now.midnight - Time.now.wday.day + 1.day + (week*7).day)..(Time.now.midnight + (7-Time.now.wday).day + 1.day + (week*7).day))
+    return schedule
+  end
+
   def delete
     id = params[:id]
     if id.blank?
