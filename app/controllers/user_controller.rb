@@ -9,7 +9,11 @@ class UserController < BaseController
     remember  = params[:remember].to_i
 
     if email.blank? && cellphone.blank?
-      render :json => {code:1, result: RESULT[:failed], msg: t(:login_email_or_phone)} and return
+      if session[:user_id].blank?
+        render :json => {code:1, result: RESULT[:failed], msg: t(:login_email_or_phone)} and return
+      end
+      user = User.find session[:user_id]
+      render :json => {code: 0,result: RESULT[:ok], user: user.private_info} and return
     end
 
     unless User.test_simple_password(password)
