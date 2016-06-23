@@ -12,7 +12,9 @@ party.factory("api", function ($http) {
             checkNickname: function (data) { return $http.get(getApi("user/check_nickname"), { params: data }); },
             reginster: function (data) { return $http.post(getApi("user/create"), data); },
             reginster_get: function (data) { return $http.get(getApi("user/create"), { params: data }); },
-            login: function (data) { return $http.get(getApi("user/login"), { params: data }); }
+            login: function (data) { return $http.get(getApi("user/login"), { params: data }); },
+            autoLogin: function () { return $http.get(getApi("user/login")); },
+            logout: function () { return $http.post(getApi("user/logout")); }
         },
         schedule: {
             getThisWeek: function () { return $http.get(getApi("web_api/schedule/this_week")); },

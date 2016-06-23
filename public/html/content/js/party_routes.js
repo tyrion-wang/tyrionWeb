@@ -48,6 +48,15 @@ party.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
                 }
             }
         })
+        .state("home.logout", {
+            url: "/logout",
+            views: {
+                "@home": {
+                    templateUrl: HTML_PATH('/passport/passport_logout.html'),
+                    controller: 'party_passport_logout_controller'
+                }
+            }
+        })
         .state("home.register", {
             url: "/register",
             views: {

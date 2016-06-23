@@ -32,6 +32,18 @@ party.controller('party_passport_login_controller', function($scope, api, $state
     }
 });
 
+party.controller('party_passport_logout_controller', function($scope, api, $state){
+    $scope.show = true;
+    $scope.isLogin = false;
+    api.passport.logout().then(function(result){
+        if(result.data.code == 0){
+            g_log('注销成功', result);
+        }else{
+            g_log('注销失败', result);
+        }
+    });
+});
+
 
 party.controller('party_passport_register_controller', function($scope, api, $state){
     //g_log('party_passport_register_controller');
